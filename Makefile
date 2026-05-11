@@ -2,7 +2,7 @@
 
 # ── Bootstrap ──────────────────────────────────────────────────────────
 install:
-	uv sync
+	uv sync --all-packages
 
 # ── Quality gates ──────────────────────────────────────────────────────
 test:
@@ -24,11 +24,14 @@ format:
 # ── Phase 0 commands ───────────────────────────────────────────────────
 # Run the Redfin CSV adapter once and write data/YYYY-MM-DD.json
 ingest:
-	uv run python -m packages.adapters.cli redfin --week current
+	uv run python -m adapters.cli redfin --week current
 
-# Regenerate the static status page from data/sources.json
+# Regenerate the static status page from data/sources.json. Pass explicit
+# paths so the install-vs-repo path layout doesn't confuse the resolver.
 status:
-	uv run python -m packages.observability.status_page
+	uv run python -m observability.status_page \
+		--sources data/sources.json \
+		--output status/index.html
 
 # ── Cleanup ────────────────────────────────────────────────────────────
 clean:
