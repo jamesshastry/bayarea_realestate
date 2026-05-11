@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Next.js (Phase 2+)
+node_modules/
+.next/
+out/
+dist/
+.turbo/
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Data / build outputs
+data/bronze/
+data/silver/
+data/gold/
+dashboard/index.html
+legacy/dashboard/
+legacy/data/
+
+# uv lock (committed) — but keep cached installs out
+uv.lock.bak
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Claude Code local settings (user-specific; safe to share `settings.json` only)
+.claude/settings.local.json
+
+# Logs
+*.log
