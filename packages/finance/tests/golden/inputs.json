@@ -1,0 +1,1872 @@
+[
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "120000",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "120000",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "120000",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "120000",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "200000",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "200000",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "200000",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "200000",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "450000",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "450000",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "450000",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "450000",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "600000",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "600000",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "600000",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "input": {
+      "buyer": {
+        "annual_income": "600000",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "market_ctx": {
+        "county": "alameda"
+      }
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.05",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "600000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0625",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "600000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0675",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "600000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.075",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "600000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.08",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "600000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.05",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "900000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0625",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "900000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0675",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "900000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.075",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "900000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.08",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "900000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.05",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1200000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0625",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1200000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0675",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1200000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.075",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1200000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.08",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1200000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.05",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1800000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0625",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1800000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0675",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1800000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.075",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1800000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.08",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "1800000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.05",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "2500000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0625",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "2500000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.0675",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "2500000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.075",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "2500000"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "input": {
+      "area_ctx": {
+        "county": "alameda",
+        "down_payment": "150000",
+        "hoa_monthly": "0",
+        "insurance_annual": "3500",
+        "mello_roos_annual": "0",
+        "property_tax_rate": "0.01155",
+        "rate": "0.08",
+        "term_years": 30,
+        "wildfire_surcharge_multiplier": "1.0"
+      },
+      "price": "2500000"
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.3",
+        "previous_phase": "unknown"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 85,
+        "median_dom": 8,
+        "months_of_supply": "0.5",
+        "pct_with_price_drops": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.3",
+        "previous_phase": "peak"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 70,
+        "median_dom": 8,
+        "months_of_supply": "0.5",
+        "pct_with_price_drops": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.3",
+        "previous_phase": "cooling"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 60,
+        "median_dom": 8,
+        "months_of_supply": "0.5",
+        "pct_with_price_drops": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.3",
+        "previous_phase": "trough"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 50,
+        "median_dom": 8,
+        "months_of_supply": "0.5",
+        "pct_with_price_drops": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.3",
+        "previous_phase": "recovery"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 30,
+        "median_dom": 8,
+        "months_of_supply": "0.5",
+        "pct_with_price_drops": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.2",
+        "previous_phase": "unknown"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 85,
+        "median_dom": 10,
+        "months_of_supply": "0.8",
+        "pct_with_price_drops": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.2",
+        "previous_phase": "peak"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 70,
+        "median_dom": 10,
+        "months_of_supply": "0.8",
+        "pct_with_price_drops": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.2",
+        "previous_phase": "cooling"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 60,
+        "median_dom": 10,
+        "months_of_supply": "0.8",
+        "pct_with_price_drops": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.2",
+        "previous_phase": "trough"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 50,
+        "median_dom": 10,
+        "months_of_supply": "0.8",
+        "pct_with_price_drops": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.2",
+        "previous_phase": "recovery"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 30,
+        "median_dom": 10,
+        "months_of_supply": "0.8",
+        "pct_with_price_drops": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.1",
+        "previous_phase": "unknown"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 85,
+        "median_dom": 14,
+        "months_of_supply": "1.2",
+        "pct_with_price_drops": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.1",
+        "previous_phase": "peak"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 70,
+        "median_dom": 14,
+        "months_of_supply": "1.2",
+        "pct_with_price_drops": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.1",
+        "previous_phase": "cooling"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 60,
+        "median_dom": 14,
+        "months_of_supply": "1.2",
+        "pct_with_price_drops": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.1",
+        "previous_phase": "trough"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 50,
+        "median_dom": 14,
+        "months_of_supply": "1.2",
+        "pct_with_price_drops": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "-0.1",
+        "previous_phase": "recovery"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 30,
+        "median_dom": 14,
+        "months_of_supply": "1.2",
+        "pct_with_price_drops": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.05",
+        "previous_phase": "unknown"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 85,
+        "median_dom": 22,
+        "months_of_supply": "2.5",
+        "pct_with_price_drops": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.05",
+        "previous_phase": "peak"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 70,
+        "median_dom": 22,
+        "months_of_supply": "2.5",
+        "pct_with_price_drops": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.05",
+        "previous_phase": "cooling"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 60,
+        "median_dom": 22,
+        "months_of_supply": "2.5",
+        "pct_with_price_drops": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.05",
+        "previous_phase": "trough"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 50,
+        "median_dom": 22,
+        "months_of_supply": "2.5",
+        "pct_with_price_drops": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.05",
+        "previous_phase": "recovery"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 30,
+        "median_dom": 22,
+        "months_of_supply": "2.5",
+        "pct_with_price_drops": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.1",
+        "previous_phase": "unknown"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 85,
+        "median_dom": 28,
+        "months_of_supply": "3.0",
+        "pct_with_price_drops": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.1",
+        "previous_phase": "peak"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 70,
+        "median_dom": 28,
+        "months_of_supply": "3.0",
+        "pct_with_price_drops": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.1",
+        "previous_phase": "cooling"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 60,
+        "median_dom": 28,
+        "months_of_supply": "3.0",
+        "pct_with_price_drops": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.1",
+        "previous_phase": "trough"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 50,
+        "median_dom": 28,
+        "months_of_supply": "3.0",
+        "pct_with_price_drops": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "compute_phase",
+    "input": {
+      "history": {
+        "baseline_dom": 22,
+        "inv_yoy": "0.1",
+        "previous_phase": "recovery"
+      },
+      "snapshot": {
+        "active_listings": 100,
+        "confidence_score": 30,
+        "median_dom": 28,
+        "months_of_supply": "3.0",
+        "pct_with_price_drops": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0",
+        "sample_size": 50
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "alameda::fremont",
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "200000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "2500",
+        "target_price": "800000",
+        "wait_horizon_months": 3
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "alameda::fremont",
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "200000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3500",
+        "target_price": "1200000",
+        "wait_horizon_months": 6
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "alameda::fremont",
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "200000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "4500",
+        "target_price": "1500000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "alameda::fremont",
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "200000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "5500",
+        "target_price": "2000000",
+        "wait_horizon_months": 24
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "alameda::fremont",
+      "buyer": {
+        "annual_income": "300000",
+        "down_payment": "200000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3000",
+        "target_price": "950000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "santa_clara::sunnyvale",
+      "buyer": {
+        "annual_income": "400000",
+        "down_payment": "250000",
+        "monthly_debts": "0",
+        "rate": "0.06",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.06",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.06",
+        "current_rent": "4000",
+        "target_price": "1500000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "santa_clara::sunnyvale",
+      "buyer": {
+        "annual_income": "400000",
+        "down_payment": "250000",
+        "monthly_debts": "0",
+        "rate": "0.065",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.065",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.065",
+        "current_rent": "4000",
+        "target_price": "1500000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "santa_clara::sunnyvale",
+      "buyer": {
+        "annual_income": "400000",
+        "down_payment": "250000",
+        "monthly_debts": "0",
+        "rate": "0.07",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.07",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.07",
+        "current_rent": "4000",
+        "target_price": "1500000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "santa_clara::sunnyvale",
+      "buyer": {
+        "annual_income": "400000",
+        "down_payment": "250000",
+        "monthly_debts": "0",
+        "rate": "0.075",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.075",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.075",
+        "current_rent": "4000",
+        "target_price": "1500000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "santa_clara::sunnyvale",
+      "buyer": {
+        "annual_income": "400000",
+        "down_payment": "250000",
+        "monthly_debts": "0",
+        "rate": "0.08",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "alameda",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.08",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.08",
+        "current_rent": "4000",
+        "target_price": "1500000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "santa_clara::city",
+      "buyer": {
+        "annual_income": "350000",
+        "down_payment": "180000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "santa_clara",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3800",
+        "target_price": "1300000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "contra_costa::city",
+      "buyer": {
+        "annual_income": "350000",
+        "down_payment": "180000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "contra_costa",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3800",
+        "target_price": "1300000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "san_mateo::city",
+      "buyer": {
+        "annual_income": "350000",
+        "down_payment": "180000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "san_mateo",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3800",
+        "target_price": "1300000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "san_francisco::city",
+      "buyer": {
+        "annual_income": "350000",
+        "down_payment": "180000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "san_francisco",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3800",
+        "target_price": "1300000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "input": {
+      "area_id": "marin::city",
+      "buyer": {
+        "annual_income": "350000",
+        "down_payment": "180000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "term_years": 30
+      },
+      "params": {
+        "area_ctx": {
+          "county": "marin",
+          "down_payment": "150000",
+          "hoa_monthly": "0",
+          "insurance_annual": "3500",
+          "mello_roos_annual": "0",
+          "property_tax_rate": "0.01155",
+          "rate": "0.0675",
+          "term_years": 30,
+          "wildfire_surcharge_multiplier": "1.0"
+        },
+        "current_rate": "0.0675",
+        "current_rent": "3800",
+        "target_price": "1300000",
+        "wait_horizon_months": 12
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_sale_price",
+        "sample_size": null,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_sale_price",
+        "sample_size": 5,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_sale_price",
+        "sample_size": 15,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_sale_price",
+        "sample_size": 30,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_sale_price",
+        "sample_size": 100,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_dom",
+        "sample_size": null,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_dom",
+        "sample_size": 5,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_dom",
+        "sample_size": 15,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_dom",
+        "sample_size": 30,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "median_dom",
+        "sample_size": 100,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "months_of_supply",
+        "sample_size": null,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "months_of_supply",
+        "sample_size": 5,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "months_of_supply",
+        "sample_size": 15,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "months_of_supply",
+        "sample_size": 30,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  },
+  {
+    "function": "confidence_score",
+    "input": {
+      "age_days": 7,
+      "disagreement": null,
+      "metric": {
+        "metric_name": "months_of_supply",
+        "sample_size": 100,
+        "unit": "USD",
+        "value": "1500"
+      }
+    }
+  }
+]

@@ -1,0 +1,3616 @@
+[
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "120000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "361150",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "2018.11",
+        "pmi": "142.61",
+        "price": "361150.00",
+        "tax": "347.61",
+        "total": "2800.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "462329",
+        "fha": "462329",
+        "high_balance": "462329",
+        "jumbo": "462329"
+      },
+      "stretch": "462329",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "2674.36",
+        "pmi": "188.98",
+        "price": "462329.00",
+        "tax": "444.99",
+        "total": "3600.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "120000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "467374",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "2058.48",
+        "pmi": "0",
+        "price": "467374.00",
+        "tax": "449.85",
+        "total": "2800.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "574779",
+        "fha": "574779",
+        "high_balance": "574779",
+        "jumbo": "574779"
+      },
+      "stretch": "574779",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "2755.11",
+        "pmi": "0",
+        "price": "574779.00",
+        "tax": "553.22",
+        "total": "3600.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "120000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "597991",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "1932.76",
+        "pmi": "0",
+        "price": "597991.00",
+        "tax": "575.57",
+        "total": "2800.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "705396",
+        "fha": "705396",
+        "high_balance": "705396",
+        "jumbo": "705396"
+      },
+      "stretch": "705396",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "2629.39",
+        "pmi": "0",
+        "price": "705396.00",
+        "tax": "678.94",
+        "total": "3600.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "120000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "772148",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "1765.15",
+        "pmi": "0",
+        "price": "772148.00",
+        "tax": "743.19",
+        "total": "2800.01"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "879551",
+        "fha": "879551",
+        "high_balance": "879551",
+        "jumbo": "879551"
+      },
+      "stretch": "879551",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "2461.76",
+        "pmi": "0",
+        "price": "879551.00",
+        "tax": "846.57",
+        "total": "3600.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "200000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "597233",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "3549.34",
+        "pmi": "250.82",
+        "price": "597233.00",
+        "tax": "574.84",
+        "total": "4666.67"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "765865",
+        "fha": "765865",
+        "high_balance": "765865",
+        "jumbo": "500000"
+      },
+      "stretch": "765865",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "4643.09",
+        "pmi": "328.10",
+        "price": "765865.00",
+        "tax": "737.15",
+        "total": "6000.01"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "200000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "717984",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "3683.93",
+        "pmi": "0",
+        "price": "717984.00",
+        "tax": "691.06",
+        "total": "4666.66"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "853691",
+        "fha": "853691",
+        "high_balance": "853691",
+        "jumbo": "853691"
+      },
+      "stretch": "853691",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "4564.13",
+        "pmi": "322.53",
+        "price": "853691.00",
+        "tax": "821.68",
+        "total": "6000.01"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "200000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "848600",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "3558.21",
+        "pmi": "0",
+        "price": "848600.00",
+        "tax": "816.78",
+        "total": "4666.66"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1027609",
+        "fha": "1027609",
+        "high_balance": "1027609",
+        "jumbo": "1027609"
+      },
+      "stretch": "1027609",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "4719.26",
+        "pmi": "0",
+        "price": "1027609.00",
+        "tax": "989.07",
+        "total": "6000.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "200000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1022757",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "3390.59",
+        "pmi": "0",
+        "price": "1022757.00",
+        "tax": "984.40",
+        "total": "4666.66"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1201764",
+        "fha": "1201764",
+        "high_balance": "1201764",
+        "jumbo": "1201764"
+      },
+      "stretch": "1201764",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "4551.63",
+        "pmi": "0",
+        "price": "1201764.00",
+        "tax": "1156.70",
+        "total": "6000.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "cash_on_hand",
+      "buyer": {
+        "annual_income": "300000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "892337",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "5463.38",
+        "pmi": "386.07",
+        "price": "892337.00",
+        "tax": "858.87",
+        "total": "6999.99"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "856500",
+        "fha": "1145283",
+        "high_balance": "1000000",
+        "jumbo": "500000"
+      },
+      "stretch": "1145283",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "7103.98",
+        "pmi": "502.00",
+        "price": "1145283.00",
+        "tax": "1102.33",
+        "total": "8999.98"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "300000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "980165",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "5384.43",
+        "pmi": "380.49",
+        "price": "980165.00",
+        "tax": "943.41",
+        "total": "7000.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "956500",
+        "fha": "1233111",
+        "high_balance": "1233111",
+        "jumbo": "1233111"
+      },
+      "stretch": "1233111",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "7025.04",
+        "pmi": "496.43",
+        "price": "1233111.00",
+        "tax": "1186.87",
+        "total": "9000.01"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "300000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1161864",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "5590.03",
+        "pmi": "0",
+        "price": "1161864.00",
+        "tax": "1118.29",
+        "total": "6999.99"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1106500",
+        "fha": "1430375",
+        "high_balance": "1430375",
+        "jumbo": "1430375"
+      },
+      "stretch": "1430375",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "7331.59",
+        "pmi": "0",
+        "price": "1430375.00",
+        "tax": "1376.74",
+        "total": "9000.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "300000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1336020",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "5422.41",
+        "pmi": "0",
+        "price": "1336020.00",
+        "tax": "1285.92",
+        "total": "7000.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1306500",
+        "fha": "1604532",
+        "high_balance": "1604532",
+        "jumbo": "1604532"
+      },
+      "stretch": "1604532",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "7163.97",
+        "pmi": "0",
+        "price": "1604532.00",
+        "tax": "1544.36",
+        "total": "9000.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "cash_on_hand",
+      "buyer": {
+        "annual_income": "450000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1334994",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "8334.45",
+        "pmi": "588.96",
+        "price": "1334994.00",
+        "tax": "1284.93",
+        "total": "10500.01"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "856500",
+        "fha": "1259750",
+        "high_balance": "1000000",
+        "jumbo": "500000"
+      },
+      "stretch": "1714414",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "10795.36",
+        "pmi": "762.86",
+        "price": "1714414.00",
+        "tax": "1650.12",
+        "total": "13500.01"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "450000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1422820",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "8255.49",
+        "pmi": "583.38",
+        "price": "1422820.00",
+        "tax": "1369.46",
+        "total": "10500.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "956500",
+        "fha": "1359750",
+        "high_balance": "1359750",
+        "jumbo": "1500000"
+      },
+      "stretch": "1802240",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "10716.40",
+        "pmi": "757.28",
+        "price": "1802240.00",
+        "tax": "1734.66",
+        "total": "13500.01"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "450000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1554561",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "8137.06",
+        "pmi": "575.01",
+        "price": "1554561.00",
+        "tax": "1496.26",
+        "total": "10500.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1106500",
+        "fha": "1509750",
+        "high_balance": "1509750",
+        "jumbo": "1933980"
+      },
+      "stretch": "1933980",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "10597.96",
+        "pmi": "748.91",
+        "price": "1933980.00",
+        "tax": "1861.46",
+        "total": "13500.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "450000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1805916",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "8470.15",
+        "pmi": "0",
+        "price": "1805916.00",
+        "tax": "1738.19",
+        "total": "10500.01"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1306500",
+        "fha": "1709750",
+        "high_balance": "1709750",
+        "jumbo": "2208681"
+      },
+      "stretch": "2208681",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "11082.47",
+        "pmi": "0",
+        "price": "2208681.00",
+        "tax": "2125.86",
+        "total": "13500.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "cash_on_hand",
+      "buyer": {
+        "annual_income": "600000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "50000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1777650",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "11205.51",
+        "pmi": "791.84",
+        "price": "1777650.00",
+        "tax": "1710.99",
+        "total": "14000.01"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "856500",
+        "fha": "1259750",
+        "high_balance": "1000000",
+        "jumbo": "500000"
+      },
+      "stretch": "2283543",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "14486.72",
+        "pmi": "1023.71",
+        "price": "2283543.00",
+        "tax": "2197.91",
+        "total": "18000.01"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_front",
+      "buyer": {
+        "annual_income": "600000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "150000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1865477",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "11126.55",
+        "pmi": "786.26",
+        "price": "1865477.00",
+        "tax": "1795.52",
+        "total": "14000.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "956500",
+        "fha": "1359750",
+        "high_balance": "1359750",
+        "jumbo": "1500000"
+      },
+      "stretch": "2371370",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "14407.76",
+        "pmi": "1018.13",
+        "price": "2371370.00",
+        "tax": "2282.44",
+        "total": "18000.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "600000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "300000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "1997218",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "11008.12",
+        "pmi": "777.89",
+        "price": "1997218.00",
+        "tax": "1922.32",
+        "total": "14000.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1106500",
+        "fha": "1509750",
+        "high_balance": "1509750",
+        "jumbo": "2503110"
+      },
+      "stretch": "2503110",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "14289.33",
+        "pmi": "1009.76",
+        "price": "2503110.00",
+        "tax": "2409.24",
+        "total": "18000.00"
+      }
+    }
+  },
+  {
+    "function": "affordability",
+    "output": {
+      "binding_constraint": "dti_back",
+      "buyer": {
+        "annual_income": "600000",
+        "base_income": null,
+        "bonus_income": null,
+        "credit_score_band": "740-779",
+        "down_payment": "500000",
+        "monthly_debts": "0",
+        "rate": "0.0675",
+        "rsu_income": null,
+        "term_years": 30
+      },
+      "comfortable": "2275809",
+      "comfortable_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "11517.86",
+        "pmi": "0",
+        "price": "2275809.00",
+        "tax": "2190.47",
+        "total": "14000.00"
+      },
+      "market_ctx": {
+        "area_median_price": null,
+        "county": "alameda"
+      },
+      "max_by_loan_type": {
+        "conforming": "1306500",
+        "fha": "1709750",
+        "high_balance": "1709750",
+        "jumbo": "2678764"
+      },
+      "stretch": "2678764",
+      "stretch_monthly": {
+        "hoa": "0.00",
+        "insurance": "291.67",
+        "mello": "0.00",
+        "p_and_i": "14131.42",
+        "pmi": "998.60",
+        "price": "2678764.00",
+        "tax": "2578.31",
+        "total": "18000.00"
+      }
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "2415.70",
+      "pmi": "0",
+      "price": "600000.00",
+      "tax": "577.50",
+      "total": "3284.87"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "2770.73",
+      "pmi": "0",
+      "price": "600000.00",
+      "tax": "577.50",
+      "total": "3639.90"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "2918.69",
+      "pmi": "0",
+      "price": "600000.00",
+      "tax": "577.50",
+      "total": "3787.86"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "3146.47",
+      "pmi": "0",
+      "price": "600000.00",
+      "tax": "577.50",
+      "total": "4015.64"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "3301.94",
+      "pmi": "0",
+      "price": "600000.00",
+      "tax": "577.50",
+      "total": "4171.11"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "4026.16",
+      "pmi": "343.75",
+      "price": "900000.00",
+      "tax": "866.25",
+      "total": "5527.83"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "4617.88",
+      "pmi": "343.75",
+      "price": "900000.00",
+      "tax": "866.25",
+      "total": "6119.55"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "4864.49",
+      "pmi": "343.75",
+      "price": "900000.00",
+      "tax": "866.25",
+      "total": "6366.16"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "5244.11",
+      "pmi": "343.75",
+      "price": "900000.00",
+      "tax": "866.25",
+      "total": "6745.78"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "5503.23",
+      "pmi": "343.75",
+      "price": "900000.00",
+      "tax": "866.25",
+      "total": "7004.90"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "5636.63",
+      "pmi": "481.25",
+      "price": "1200000.00",
+      "tax": "1155.00",
+      "total": "7564.55"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "6465.03",
+      "pmi": "481.25",
+      "price": "1200000.00",
+      "tax": "1155.00",
+      "total": "8392.95"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "6810.28",
+      "pmi": "481.25",
+      "price": "1200000.00",
+      "tax": "1155.00",
+      "total": "8738.20"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "7341.75",
+      "pmi": "481.25",
+      "price": "1200000.00",
+      "tax": "1155.00",
+      "total": "9269.67"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "7704.53",
+      "pmi": "481.25",
+      "price": "1200000.00",
+      "tax": "1155.00",
+      "total": "9632.45"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "8857.56",
+      "pmi": "756.25",
+      "price": "1800000.00",
+      "tax": "1732.50",
+      "total": "11637.98"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "10159.33",
+      "pmi": "756.25",
+      "price": "1800000.00",
+      "tax": "1732.50",
+      "total": "12939.75"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "10701.87",
+      "pmi": "756.25",
+      "price": "1800000.00",
+      "tax": "1732.50",
+      "total": "13482.29"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "11537.04",
+      "pmi": "756.25",
+      "price": "1800000.00",
+      "tax": "1732.50",
+      "total": "14317.46"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "12107.12",
+      "pmi": "756.25",
+      "price": "1800000.00",
+      "tax": "1732.50",
+      "total": "14887.54"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "12615.31",
+      "pmi": "1077.08",
+      "price": "2500000.00",
+      "tax": "2406.25",
+      "total": "16390.31"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "14469.35",
+      "pmi": "1077.08",
+      "price": "2500000.00",
+      "tax": "2406.25",
+      "total": "18244.35"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "15242.06",
+      "pmi": "1077.08",
+      "price": "2500000.00",
+      "tax": "2406.25",
+      "total": "19017.06"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "16431.54",
+      "pmi": "1077.08",
+      "price": "2500000.00",
+      "tax": "2406.25",
+      "total": "20206.54"
+    }
+  },
+  {
+    "function": "monthly_cost",
+    "output": {
+      "hoa": "0.00",
+      "insurance": "291.67",
+      "mello": "0.00",
+      "p_and_i": "17243.47",
+      "pmi": "1077.08",
+      "price": "2500000.00",
+      "tax": "2406.25",
+      "total": "21018.47"
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.82",
+      "components": {
+        "dom_trend": "-14",
+        "inv_yoy": "-0.3",
+        "mos": "0.5",
+        "pdrop": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15"
+      },
+      "confidence": "high",
+      "phase": "peak",
+      "seller_pressure": 2
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.82",
+      "components": {
+        "dom_trend": "-14",
+        "inv_yoy": "-0.3",
+        "mos": "0.5",
+        "pdrop": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 2
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.82",
+      "components": {
+        "dom_trend": "-14",
+        "inv_yoy": "-0.3",
+        "mos": "0.5",
+        "pdrop": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 2
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.82",
+      "components": {
+        "dom_trend": "-14",
+        "inv_yoy": "-0.3",
+        "mos": "0.5",
+        "pdrop": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 2
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.82",
+      "components": {
+        "dom_trend": "-14",
+        "inv_yoy": "-0.3",
+        "mos": "0.5",
+        "pdrop": "0.02",
+        "s2l_12w": "1.1",
+        "s2l_4w": "1.15"
+      },
+      "confidence": "low",
+      "phase": "unknown",
+      "seller_pressure": 2
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.55",
+      "components": {
+        "dom_trend": "-12",
+        "inv_yoy": "-0.2",
+        "mos": "0.8",
+        "pdrop": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1"
+      },
+      "confidence": "high",
+      "phase": "peak",
+      "seller_pressure": 5
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.55",
+      "components": {
+        "dom_trend": "-12",
+        "inv_yoy": "-0.2",
+        "mos": "0.8",
+        "pdrop": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 5
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.55",
+      "components": {
+        "dom_trend": "-12",
+        "inv_yoy": "-0.2",
+        "mos": "0.8",
+        "pdrop": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 5
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.55",
+      "components": {
+        "dom_trend": "-12",
+        "inv_yoy": "-0.2",
+        "mos": "0.8",
+        "pdrop": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 5
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 100,
+      "clock_position": "11.55",
+      "components": {
+        "dom_trend": "-12",
+        "inv_yoy": "-0.2",
+        "mos": "0.8",
+        "pdrop": "0.05",
+        "s2l_12w": "1.05",
+        "s2l_4w": "1.1"
+      },
+      "confidence": "low",
+      "phase": "unknown",
+      "seller_pressure": 5
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 90,
+      "clock_position": "10.38",
+      "components": {
+        "dom_trend": "-8",
+        "inv_yoy": "-0.1",
+        "mos": "1.2",
+        "pdrop": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05"
+      },
+      "confidence": "high",
+      "phase": "peak",
+      "seller_pressure": 8
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 90,
+      "clock_position": "10.38",
+      "components": {
+        "dom_trend": "-8",
+        "inv_yoy": "-0.1",
+        "mos": "1.2",
+        "pdrop": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 8
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 90,
+      "clock_position": "10.38",
+      "components": {
+        "dom_trend": "-8",
+        "inv_yoy": "-0.1",
+        "mos": "1.2",
+        "pdrop": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 8
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 90,
+      "clock_position": "10.38",
+      "components": {
+        "dom_trend": "-8",
+        "inv_yoy": "-0.1",
+        "mos": "1.2",
+        "pdrop": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05"
+      },
+      "confidence": "medium",
+      "phase": "peak",
+      "seller_pressure": 8
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 90,
+      "clock_position": "10.38",
+      "components": {
+        "dom_trend": "-8",
+        "inv_yoy": "-0.1",
+        "mos": "1.2",
+        "pdrop": "0.08",
+        "s2l_12w": "1.03",
+        "s2l_4w": "1.05"
+      },
+      "confidence": "low",
+      "phase": "unknown",
+      "seller_pressure": 8
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 22,
+      "clock_position": "3.09",
+      "components": {
+        "dom_trend": "0",
+        "inv_yoy": "0.05",
+        "mos": "2.5",
+        "pdrop": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02"
+      },
+      "confidence": "high",
+      "phase": "recovery",
+      "seller_pressure": 25
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 22,
+      "clock_position": "3.09",
+      "components": {
+        "dom_trend": "0",
+        "inv_yoy": "0.05",
+        "mos": "2.5",
+        "pdrop": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02"
+      },
+      "confidence": "medium",
+      "phase": "cooling",
+      "seller_pressure": 25
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 22,
+      "clock_position": "3.09",
+      "components": {
+        "dom_trend": "0",
+        "inv_yoy": "0.05",
+        "mos": "2.5",
+        "pdrop": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02"
+      },
+      "confidence": "medium",
+      "phase": "recovery",
+      "seller_pressure": 25
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 22,
+      "clock_position": "3.09",
+      "components": {
+        "dom_trend": "0",
+        "inv_yoy": "0.05",
+        "mos": "2.5",
+        "pdrop": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02"
+      },
+      "confidence": "medium",
+      "phase": "recovery",
+      "seller_pressure": 25
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 22,
+      "clock_position": "3.09",
+      "components": {
+        "dom_trend": "0",
+        "inv_yoy": "0.05",
+        "mos": "2.5",
+        "pdrop": "0.2",
+        "s2l_12w": "1.01",
+        "s2l_4w": "1.02"
+      },
+      "confidence": "low",
+      "phase": "unknown",
+      "seller_pressure": 25
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 0,
+      "clock_position": "4.59",
+      "components": {
+        "dom_trend": "6",
+        "inv_yoy": "0.1",
+        "mos": "3.0",
+        "pdrop": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0"
+      },
+      "confidence": "high",
+      "phase": "recovery",
+      "seller_pressure": 53
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 0,
+      "clock_position": "4.59",
+      "components": {
+        "dom_trend": "6",
+        "inv_yoy": "0.1",
+        "mos": "3.0",
+        "pdrop": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0"
+      },
+      "confidence": "medium",
+      "phase": "cooling",
+      "seller_pressure": 53
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 0,
+      "clock_position": "4.59",
+      "components": {
+        "dom_trend": "6",
+        "inv_yoy": "0.1",
+        "mos": "3.0",
+        "pdrop": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0"
+      },
+      "confidence": "medium",
+      "phase": "cooling",
+      "seller_pressure": 53
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 0,
+      "clock_position": "4.59",
+      "components": {
+        "dom_trend": "6",
+        "inv_yoy": "0.1",
+        "mos": "3.0",
+        "pdrop": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0"
+      },
+      "confidence": "medium",
+      "phase": "recovery",
+      "seller_pressure": 53
+    }
+  },
+  {
+    "function": "compute_phase",
+    "output": {
+      "buyer_pressure": 0,
+      "clock_position": "4.59",
+      "components": {
+        "dom_trend": "6",
+        "inv_yoy": "0.1",
+        "mos": "3.0",
+        "pdrop": "0.25",
+        "s2l_12w": "1.0",
+        "s2l_4w": "1.0"
+      },
+      "confidence": "low",
+      "phase": "unknown",
+      "seller_pressure": 53
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-3993.34",
+            "break_even_rate_drop": "0.0281",
+            "cumulative_savings_or_cost": "-731.97",
+            "monthly_payment_later": "5331.49",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "2774.69",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "7500.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-3993.34",
+            "break_even_rate_drop": "0.0281",
+            "cumulative_savings_or_cost": "-94.71",
+            "monthly_payment_later": "5543.91",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "3411.95",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "7500.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-3993.34",
+            "break_even_rate_drop": "0.0281",
+            "cumulative_savings_or_cost": "556.02",
+            "monthly_payment_later": "5760.82",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "4062.68",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "7500.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "6015.01",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-504.45",
+            "monthly_payment_later": "5407.33",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "13010.56",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "7500.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "6015.01",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "142.65",
+            "monthly_payment_later": "5623.03",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "13657.66",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "7500.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "6015.01",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "803.49",
+            "monthly_payment_later": "5843.31",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "14318.50",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "7500.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "12060.10",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-367.02",
+            "monthly_payment_later": "5453.14",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "19193.08",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "7500.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "12060.10",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "286.05",
+            "monthly_payment_later": "5670.83",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "19846.15",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "7500.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "12060.10",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "952.98",
+            "monthly_payment_later": "5893.14",
+            "monthly_payment_now": "5575.48",
+            "net_dollar_impact": "20513.08",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "7500.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "800000",
+      "wait_horizon_months": 3
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-11950.11",
+            "break_even_rate_drop": "0.0215",
+            "cumulative_savings_or_cost": "-2614.86",
+            "monthly_payment_later": "8302.39",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "6435.03",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "21000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-11950.11",
+            "break_even_rate_drop": "0.0215",
+            "cumulative_savings_or_cost": "-566.94",
+            "monthly_payment_later": "8643.71",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "8482.95",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "21000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-11950.11",
+            "break_even_rate_drop": "0.0215",
+            "cumulative_savings_or_cost": "1524.42",
+            "monthly_payment_later": "8992.27",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "10574.31",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "21000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "18112.88",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-1248.00",
+            "monthly_payment_later": "8530.20",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "37864.88",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "21000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "18112.88",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "859.26",
+            "monthly_payment_later": "8881.41",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "39972.14",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "21000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "18112.88",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3011.16",
+            "monthly_payment_later": "9240.06",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "42124.04",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "21000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "36453.01",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-414.00",
+            "monthly_payment_later": "8669.20",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "57039.01",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "21000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "36453.01",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "1729.38",
+            "monthly_payment_later": "9026.43",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "59182.39",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "21000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "36453.01",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3918.24",
+            "monthly_payment_later": "9391.24",
+            "monthly_payment_now": "8738.20",
+            "net_dollar_impact": "61371.25",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "21000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1200000",
+      "wait_horizon_months": 6
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0214",
+            "cumulative_savings_or_cost": "-8029.80",
+            "monthly_payment_later": "10441.09",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "16243.68",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "54000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0214",
+            "cumulative_savings_or_cost": "-2820.36",
+            "monthly_payment_later": "10875.21",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "21453.12",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "54000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0214",
+            "cumulative_savings_or_cost": "2499.48",
+            "monthly_payment_later": "11318.53",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "26772.96",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "54000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-1177.80",
+            "monthly_payment_later": "11012.09",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "98446.14",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "54000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "4328.88",
+            "monthly_payment_later": "11470.98",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "103952.82",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "54000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "9952.44",
+            "monthly_payment_later": "11939.61",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "109576.38",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "54000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3086.40",
+            "monthly_payment_later": "11367.44",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "149603.12",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "54000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8778.24",
+            "monthly_payment_later": "11841.76",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "155294.96",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "54000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "14590.68",
+            "monthly_payment_later": "12326.13",
+            "monthly_payment_now": "11110.24",
+            "net_dollar_impact": "161107.40",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "54000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1500000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-78485.24",
+            "break_even_rate_drop": "0.0141",
+            "cumulative_savings_or_cost": "-28873.44",
+            "monthly_payment_later": "13860.59",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "24641.32",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "132000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-78485.24",
+            "break_even_rate_drop": "0.0141",
+            "cumulative_savings_or_cost": "-14893.68",
+            "monthly_payment_later": "14443.08",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "38621.08",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "132000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-78485.24",
+            "break_even_rate_drop": "0.0141",
+            "cumulative_savings_or_cost": "-617.52",
+            "monthly_payment_later": "15037.92",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "52897.24",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "132000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "123514.09",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "7864.80",
+            "monthly_payment_later": "15391.35",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "263378.89",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "132000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "123514.09",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "23438.40",
+            "monthly_payment_later": "16040.25",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "278952.49",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "132000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "123514.09",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "39342.72",
+            "monthly_payment_later": "16702.93",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "294856.81",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "132000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "254319.55",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "31654.56",
+            "monthly_payment_later": "16382.59",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "417974.11",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "132000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "254319.55",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "48260.64",
+            "monthly_payment_later": "17074.51",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "434580.19",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "132000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "254319.55",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "65218.80",
+            "monthly_payment_later": "17781.10",
+            "monthly_payment_now": "15063.65",
+            "net_dollar_impact": "451538.35",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "132000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "2000000",
+      "wait_horizon_months": 24
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-18826.80",
+            "break_even_rate_drop": "0.0264",
+            "cumulative_savings_or_cost": "-4868.64",
+            "monthly_payment_later": "6355.78",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "12304.56",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "36000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-18826.80",
+            "break_even_rate_drop": "0.0264",
+            "cumulative_savings_or_cost": "-1786.44",
+            "monthly_payment_later": "6612.63",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "15386.76",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "36000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-18826.80",
+            "break_even_rate_drop": "0.0264",
+            "cumulative_savings_or_cost": "1361.28",
+            "monthly_payment_later": "6874.94",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "18534.48",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "36000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "28895.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-528.96",
+            "monthly_payment_later": "6717.42",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "64366.20",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "36000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "28895.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2741.64",
+            "monthly_payment_later": "6989.97",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "67636.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "36000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "28895.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "6081.60",
+            "monthly_payment_later": "7268.30",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "70976.76",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "36000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "58593.92",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2171.64",
+            "monthly_payment_later": "6942.47",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "96765.56",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "36000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "58593.92",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "5559.36",
+            "monthly_payment_later": "7224.78",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "100153.28",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "36000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "58593.92",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "9018.96",
+            "monthly_payment_later": "7513.08",
+            "monthly_payment_now": "6761.50",
+            "net_dollar_impact": "103612.88",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "36000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "950000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0160",
+            "cumulative_savings_or_cost": "-7677.48",
+            "monthly_payment_later": "9808.31",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "10596.00",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0160",
+            "cumulative_savings_or_cost": "-2645.40",
+            "monthly_payment_later": "10227.65",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "15628.08",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0160",
+            "cumulative_savings_or_cost": "2506.44",
+            "monthly_payment_later": "10656.97",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "20779.92",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-1258.92",
+            "monthly_payment_later": "10343.19",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "92365.02",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "4060.32",
+            "monthly_payment_later": "10786.46",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "97684.26",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "9506.16",
+            "monthly_payment_later": "11240.28",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "103130.10",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2735.64",
+            "monthly_payment_later": "10676.07",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "143252.36",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8233.68",
+            "monthly_payment_later": "11134.24",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "148750.40",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "13862.52",
+            "monthly_payment_later": "11603.31",
+            "monthly_payment_now": "10448.10",
+            "net_dollar_impact": "154379.24",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.06",
+      "target_price": "1500000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0154",
+            "cumulative_savings_or_cost": "-7913.28",
+            "monthly_payment_later": "10227.65",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "10360.20",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0154",
+            "cumulative_savings_or_cost": "-2761.44",
+            "monthly_payment_later": "10656.97",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "15512.04",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0154",
+            "cumulative_savings_or_cost": "2503.92",
+            "monthly_payment_later": "11095.75",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "20777.40",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-1207.56",
+            "monthly_payment_later": "10786.46",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "92416.38",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "4238.28",
+            "monthly_payment_later": "11240.28",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "97862.22",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "9804.24",
+            "monthly_payment_later": "11704.11",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "103428.18",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2965.80",
+            "monthly_payment_later": "11134.24",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "143482.52",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8594.64",
+            "monthly_payment_later": "11603.31",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "149111.36",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "14347.56",
+            "monthly_payment_later": "12082.72",
+            "monthly_payment_now": "10887.09",
+            "net_dollar_impact": "154864.28",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.065",
+      "target_price": "1500000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0149",
+            "cumulative_savings_or_cost": "-8145.36",
+            "monthly_payment_later": "10656.97",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "10128.12",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0149",
+            "cumulative_savings_or_cost": "-2880.00",
+            "monthly_payment_later": "11095.75",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "15393.48",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0149",
+            "cumulative_savings_or_cost": "2492.76",
+            "monthly_payment_later": "11543.48",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "20766.24",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-1145.64",
+            "monthly_payment_later": "11240.28",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "92478.30",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "4420.32",
+            "monthly_payment_later": "11704.11",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "98044.26",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "10099.80",
+            "monthly_payment_later": "12177.40",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "103723.74",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3210.72",
+            "monthly_payment_later": "11603.31",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "143727.44",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8963.64",
+            "monthly_payment_later": "12082.72",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "149480.36",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "14833.92",
+            "monthly_payment_later": "12571.91",
+            "monthly_payment_now": "11335.75",
+            "net_dollar_impact": "155350.64",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.07",
+      "target_price": "1500000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0145",
+            "cumulative_savings_or_cost": "-8373.84",
+            "monthly_payment_later": "11095.75",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "9899.64",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0145",
+            "cumulative_savings_or_cost": "-3001.08",
+            "monthly_payment_later": "11543.48",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "15272.40",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0145",
+            "cumulative_savings_or_cost": "2472.84",
+            "monthly_payment_later": "11999.64",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "20746.32",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-1073.52",
+            "monthly_payment_later": "11704.11",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "92550.42",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "4605.96",
+            "monthly_payment_later": "12177.40",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "98229.90",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "10392.12",
+            "monthly_payment_later": "12659.58",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "104016.06",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3469.80",
+            "monthly_payment_later": "12082.72",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "143986.52",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "9340.08",
+            "monthly_payment_later": "12571.91",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "149856.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "15320.76",
+            "monthly_payment_later": "13070.30",
+            "monthly_payment_now": "11793.57",
+            "net_dollar_impact": "155837.48",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.075",
+      "target_price": "1500000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0141",
+            "cumulative_savings_or_cost": "-8598.12",
+            "monthly_payment_later": "11543.48",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "9675.36",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0141",
+            "cumulative_savings_or_cost": "-3124.20",
+            "monthly_payment_later": "11999.64",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "15149.28",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-29726.52",
+            "break_even_rate_drop": "0.0141",
+            "cumulative_savings_or_cost": "2444.52",
+            "monthly_payment_later": "12463.70",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "20718.00",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-991.08",
+            "monthly_payment_later": "12177.40",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "92632.86",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "4795.08",
+            "monthly_payment_later": "12659.58",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "98419.02",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "45623.94",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "10681.68",
+            "monthly_payment_later": "13150.13",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "104305.62",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3743.04",
+            "monthly_payment_later": "12571.91",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "144259.76",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "9723.72",
+            "monthly_payment_later": "13070.30",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "150240.44",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "48000.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "92516.72",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "15808.08",
+            "monthly_payment_later": "13577.33",
+            "monthly_payment_now": "12259.99",
+            "net_dollar_impact": "156324.80",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "48000.00"
+          }
+        ]
+      ],
+      "current_rate": "0.08",
+      "target_price": "1500000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-6880.32",
+            "monthly_payment_later": "8955.52",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "12956.69",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-2444.40",
+            "monthly_payment_later": "9325.18",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "17392.61",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "2085.60",
+            "monthly_payment_later": "9702.68",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "21922.61",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-941.76",
+            "monthly_payment_later": "9450.40",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "84198.98",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3751.80",
+            "monthly_payment_later": "9841.53",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "88892.54",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8544.84",
+            "monthly_payment_later": "10240.95",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "93685.58",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2753.76",
+            "monthly_payment_later": "9758.36",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "128534.92",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "7607.64",
+            "monthly_payment_later": "10162.85",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "133388.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "12564.48",
+            "monthly_payment_later": "10575.92",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "138345.64",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1300000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-6880.32",
+            "monthly_payment_later": "8955.52",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "12956.69",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-2444.40",
+            "monthly_payment_later": "9325.18",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "17392.61",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "2085.60",
+            "monthly_payment_later": "9702.68",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "21922.61",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-941.76",
+            "monthly_payment_later": "9450.40",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "84198.98",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3751.80",
+            "monthly_payment_later": "9841.53",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "88892.54",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8544.84",
+            "monthly_payment_later": "10240.95",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "93685.58",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2753.76",
+            "monthly_payment_later": "9758.36",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "128534.92",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "7607.64",
+            "monthly_payment_later": "10162.85",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "133388.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "12564.48",
+            "monthly_payment_later": "10575.92",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "138345.64",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1300000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-6880.32",
+            "monthly_payment_later": "8955.52",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "12956.69",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-2444.40",
+            "monthly_payment_later": "9325.18",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "17392.61",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "2085.60",
+            "monthly_payment_later": "9702.68",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "21922.61",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-941.76",
+            "monthly_payment_later": "9450.40",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "84198.98",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3751.80",
+            "monthly_payment_later": "9841.53",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "88892.54",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8544.84",
+            "monthly_payment_later": "10240.95",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "93685.58",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2753.76",
+            "monthly_payment_later": "9758.36",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "128534.92",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "7607.64",
+            "monthly_payment_later": "10162.85",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "133388.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "12564.48",
+            "monthly_payment_later": "10575.92",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "138345.64",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1300000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-6880.32",
+            "monthly_payment_later": "8955.52",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "12956.69",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-2444.40",
+            "monthly_payment_later": "9325.18",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "17392.61",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "2085.60",
+            "monthly_payment_later": "9702.68",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "21922.61",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-941.76",
+            "monthly_payment_later": "9450.40",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "84198.98",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3751.80",
+            "monthly_payment_later": "9841.53",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "88892.54",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8544.84",
+            "monthly_payment_later": "10240.95",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "93685.58",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2753.76",
+            "monthly_payment_later": "9758.36",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "128534.92",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "7607.64",
+            "monthly_payment_later": "10162.85",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "133388.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "12564.48",
+            "monthly_payment_later": "10575.92",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "138345.64",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1300000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "cost_of_waiting",
+    "output": {
+      "cells": [
+        [
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-6880.32",
+            "monthly_payment_later": "8955.52",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "12956.69",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "-2444.40",
+            "monthly_payment_later": "9325.18",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "17392.61",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "-0.02",
+            "appreciation_change_dollars": "-25762.99",
+            "break_even_rate_drop": "0.0203",
+            "cumulative_savings_or_cost": "2085.60",
+            "monthly_payment_later": "9702.68",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "21922.61",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "-941.76",
+            "monthly_payment_later": "9450.40",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "84198.98",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "3751.80",
+            "monthly_payment_later": "9841.53",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "88892.54",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.03",
+            "appreciation_change_dollars": "39540.74",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "8544.84",
+            "monthly_payment_later": "10240.95",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "93685.58",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ],
+        [
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "2753.76",
+            "monthly_payment_later": "9758.36",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "128534.92",
+            "rate_change": "-0.005",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "7607.64",
+            "monthly_payment_later": "10162.85",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "133388.80",
+            "rate_change": "0.000",
+            "rent_paid_during_wait": "45600.00"
+          },
+          {
+            "appreciation_annual": "0.06",
+            "appreciation_change_dollars": "80181.16",
+            "break_even_rate_drop": "0.05",
+            "cumulative_savings_or_cost": "12564.48",
+            "monthly_payment_later": "10575.92",
+            "monthly_payment_now": "9528.88",
+            "net_dollar_impact": "138345.64",
+            "rate_change": "0.005",
+            "rent_paid_during_wait": "45600.00"
+          }
+        ]
+      ],
+      "current_rate": "0.0675",
+      "target_price": "1300000",
+      "wait_horizon_months": 12
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size unknown for 'median_sale_price'"
+      ],
+      "score": 70,
+      "tier": "medium"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size 5 is below low-confidence threshold (10)"
+      ],
+      "score": 65,
+      "tier": "medium"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size 15 is medium-confidence (need 30+ for high)"
+      ],
+      "score": 85,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size unknown for 'median_dom'"
+      ],
+      "score": 70,
+      "tier": "medium"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size 5 is below low-confidence threshold (8)"
+      ],
+      "score": 65,
+      "tier": "medium"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size 15 is medium-confidence (need 20+ for high)"
+      ],
+      "score": 85,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [
+        "sample size unknown for 'months_of_supply'"
+      ],
+      "score": 70,
+      "tier": "medium"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  },
+  {
+    "function": "confidence_score",
+    "output": {
+      "reasons": [],
+      "score": 100,
+      "tier": "high"
+    }
+  }
+]

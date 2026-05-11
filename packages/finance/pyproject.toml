@@ -1,0 +1,48 @@
+[project]
+name = "bayre-finance"
+version = "0.1.0"
+description = "Pure-function finance + market-timing computations for the Bay Area FTHB tool. No I/O."
+requires-python = ">=3.12"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# Flat layout: every module the user owns lives directly under this directory
+# (``packages/finance/``). Hatch publishes them under the importable name
+# ``finance`` (matching the directory name) so tests can do
+# ``from finance.affordability import affordability`` without depending on
+# ``packages/`` being on ``sys.path``.
+#
+# We use a flat layout — rather than nesting under ``src/`` — because
+# ``docs/contracts.md`` (C3) and ``docs/design.md`` §2 place every module at
+# ``packages/finance/<module>.py`` directly. Coverage in the root
+# ``pyproject.toml`` (``source = ["packages"]``) is path-based, so it tracks
+# these files where they live regardless of import name.
+[tool.hatch.build.targets.wheel]
+sources = ["."]
+
+[tool.hatch.build.targets.wheel.force-include]
+"__init__.py" = "finance/__init__.py"
+"_types.py" = "finance/_types.py"
+"affordability.py" = "finance/affordability.py"
+"timing.py" = "finance/timing.py"
+"cost_of_waiting.py" = "finance/cost_of_waiting.py"
+"tax_rules.py" = "finance/tax_rules.py"
+"phase_weights.py" = "finance/phase_weights.py"
+"confidence.py" = "finance/confidence.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "__init__.py",
+    "_types.py",
+    "affordability.py",
+    "timing.py",
+    "cost_of_waiting.py",
+    "tax_rules.py",
+    "phase_weights.py",
+    "confidence.py",
+    "tests",
+    "pyproject.toml",
+]
