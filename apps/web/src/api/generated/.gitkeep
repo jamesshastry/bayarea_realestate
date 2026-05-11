@@ -1,0 +1,8 @@
+# Codegen output target.
+#
+# Phase 2 deliverable: an `openapi-typescript` (or `openapi-fetch`) script
+# reads `apps/api/openapi.json` and writes typed clients here. Until then,
+# `apps/web/src/lib/api/client.ts` is the manual fetch wrapper and pages
+# pass response types inline.
+#
+# Do NOT commit generated files manually — regen is part of `make precommit`.

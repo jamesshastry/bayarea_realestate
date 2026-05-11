@@ -1,0 +1,30 @@
+{
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "recharts",
+            "message": "Import from `@/components/ui/Chart` instead. Per docs/design.md §10.7.4.1, all chart usage must go through the <Chart> adapter (the only file allowed to import recharts). See docs/implementation-plan.md Phase 2 exit criteria."
+          }
+        ],
+        "patterns": [
+          {
+            "group": ["@visx/*"],
+            "message": "Import from `@/components/ui/Chart` instead. The <Chart> adapter routes complex viz (Market Clock face, fragmentation viz, brushable timeseries) to Visx; consumers never reach in directly. See docs/design.md §10.7.4.1."
+          }
+        ]
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/components/ui/Chart.tsx"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
+}

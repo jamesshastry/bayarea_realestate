@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/**
+ * Semantic design tokens — see docs/design.md §10.7.3.
+ * OKLCH gives perceptually-uniform pairs across light/dark.
+ */
+@layer base {
+  :root {
+    /* Surfaces */
+    --bg: oklch(15% 0 0);
+    --surface: oklch(19% 0 0);
+    --border: oklch(28% 0 0);
+
+    /* Text */
+    --tx: oklch(90% 0.02 80);
+    --tx-muted: oklch(60% 0.02 80);
+
+    /* Semantic — money & confidence */
+    --positive: oklch(75% 0.18 145);
+    --negative: oklch(70% 0.21 25);
+    --warning: oklch(82% 0.16 75);
+    --info: oklch(70% 0.15 230);
+
+    /* Market Phase */
+    --phase-peak: oklch(70% 0.21 25);
+    --phase-cooling: oklch(82% 0.16 75);
+    --phase-trough: oklch(75% 0.18 145);
+    --phase-recovery: oklch(70% 0.15 230);
+
+    /* Freshness tier */
+    --tier-realtime: oklch(75% 0.18 145);
+    --tier-near-realtime: oklch(70% 0.15 200);
+    --tier-daily: oklch(75% 0.10 250);
+    --tier-stale: oklch(60% 0.10 30);
+  }
+
+  [data-theme="light"] {
+    --bg: oklch(98% 0 0);
+    --surface: oklch(100% 0 0);
+    --border: oklch(90% 0 0);
+    --tx: oklch(20% 0.02 80);
+    --tx-muted: oklch(50% 0.02 80);
+  }
+
+  html,
+  body {
+    background: var(--bg);
+    color: var(--tx);
+    font-family:
+      ui-sans-serif,
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      sans-serif;
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Bay Area RE — API",
+    "version": "0.0.0",
+    "description": "FastAPI backend for the Bay Area first-time-home-buyer decision-support tool. See `docs/design.md` §6 for the route surface and `docs/datamodel.md` for the underlying schema.\n\n*** This is a placeholder spec committed for the frontend codegen target. Regenerate after every API change with:\n\n    uv run python -c \"import json; from bayre_api.main import app; print(json.dumps(app.openapi(), indent=2))\" > apps/api/openapi.json\n\nThe Phase 2 deliverable wires this into a `make precommit` hook (per docs/contracts.md C6)."
+  },
+  "paths": {
+    "/v1/status": {
+      "get": {
+        "tags": ["status"],
+        "summary": "Per-source ingest health (NF-DAT-08)",
+        "operationId": "get_status",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/StatusResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/health": {
+      "get": {
+        "tags": ["meta"],
+        "summary": "Liveness probe",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    },
+    "/v1/areas/search": {
+      "get": {
+        "tags": ["areas"],
+        "summary": "Search areas by name + kind",
+        "operationId": "search_areas",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    },
+    "/v1/areas/{area_id}": {
+      "get": {
+        "tags": ["areas"],
+        "summary": "Get one area by id",
+        "operationId": "get_area",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    },
+    "/v1/areas/{area_id}/snapshot": {
+      "get": {
+        "tags": ["areas"],
+        "summary": "Latest snapshot for (area, property_type, period)",
+        "operationId": "get_snapshot",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    },
+    "/v1/areas/{area_id}/timeseries": {
+      "get": {
+        "tags": ["areas"],
+        "summary": "Timeseries of one metric over a date range",
+        "operationId": "get_timeseries",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    },
+    "/v1/finance/affordability": {
+      "post": {
+        "tags": ["finance"],
+        "summary": "Compute comfortable / stretch / max-by-loan-type for a buyer",
+        "operationId": "affordability",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    },
+    "/v1/finance/monthly-cost": {
+      "post": {
+        "tags": ["finance"],
+        "summary": "Decompose monthly housing cost (P&I + tax + Mello + HOA + insurance + PMI)",
+        "operationId": "monthly_cost",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    },
+    "/v1/finance/cost-of-waiting": {
+      "post": {
+        "tags": ["finance"],
+        "summary": "3×3 grid of (appreciation × rate) scenarios for waiting horizon",
+        "operationId": "cost_of_waiting",
+        "responses": {
+          "501": { "description": "Not yet implemented (Phase 2 stub)" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StatusResponse": {
+        "type": "object",
+        "required": ["overall", "generated_at", "sources"],
+        "properties": {
+          "overall": {
+            "type": "string",
+            "enum": ["green", "yellow", "red", "unknown"]
+          },
+          "generated_at": { "type": "string", "format": "date-time" },
+          "sources": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/SourceStatus" }
+          }
+        }
+      },
+      "SourceStatus": {
+        "type": "object",
+        "required": ["name", "display_name", "health", "freshness_tier"],
+        "properties": {
+          "name": { "type": "string" },
+          "display_name": { "type": "string" },
+          "health": {
+            "type": "string",
+            "enum": ["green", "yellow", "red", "unknown"]
+          },
+          "freshness_tier": {
+            "type": "string",
+            "enum": [
+              "realtime",
+              "near_realtime",
+              "daily",
+              "weekly",
+              "monthly",
+              "quarterly",
+              "annual"
+            ]
+          },
+          "last_fetch_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "last_success_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          },
+          "last_error": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
+          "expected_next_at": {
+            "anyOf": [{ "type": "string", "format": "date-time" }, { "type": "null" }]
+          }
+        }
+      }
+    }
+  }
+}

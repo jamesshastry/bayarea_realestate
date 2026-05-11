@@ -1,0 +1,16 @@
+{
+  "name": "bayre-workspace",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Bay Area first-time-home-buyer decision-support tool — JS workspace root.",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @bayre/web dev",
+    "build": "pnpm --filter @bayre/web build",
+    "typecheck": "pnpm --filter @bayre/web typecheck",
+    "lint": "pnpm --filter @bayre/web lint"
+  }
+}
