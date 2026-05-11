@@ -37,6 +37,36 @@ jobs:
       - name: Test (fast — exclude integration)
         run: make test-fast
 
+  finance-ts-parity:
+    name: Finance TS port — golden-file parity with Python
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11"
+          cache: pnpm
+
+      - name: Install (workspace root)
+        run: pnpm install --frozen-lockfile=false
+
+      - name: Typecheck (@bayre/finance)
+        run: pnpm --filter @bayre/finance typecheck
+
+      - name: Test — golden-file parity + property tests
+        # Reads `packages/finance/tests/golden/{inputs,outputs}.json`
+        # (produced by the Python implementation) and asserts byte-equal
+        # output. Any drift fails the build per `docs/contracts.md` C3.
+        run: pnpm --filter @bayre/finance test
+
   validate-snapshot-files:
     name: Validate committed data/*.json against SnapshotFile
     runs-on: ubuntu-latest

@@ -2,10 +2,11 @@
 #
 # Members:
 #   - apps/web                       Next.js 15 frontend (Phase 2+)
+#   - packages/finance/_ts_export    hand-ported TS mirror of `packages/finance/`
+#                                     (CI golden-file tests assert byte-equal output)
 #
 # Phase 2+ will add:
 #   - packages/domain/_ts_export      auto-generated TS port of `packages/domain/`
-#   - packages/finance/_ts_export     hand-ported TS mirror of `packages/finance/`
-#                                     (CI golden-file tests assert byte-equal output)
 packages:
   - "apps/web"
+  - "packages/finance/_ts_export"
