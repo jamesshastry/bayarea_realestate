@@ -1,0 +1,37 @@
+[project]
+name = "bayre-domain"
+version = "0.0.0"
+description = "Domain models (Pydantic v2) for Bay Area FTHB tool — schemas, periods, geographic-area stub."
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.7",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+# Flat layout (matches packages/finance/) — files live at packages/domain/<file>.py
+# but are published under the importable name `domain` so external code can do
+# `from domain.snapshot import SnapshotFile`. Coverage in the root pyproject is
+# path-based, so it tracks files where they live regardless of import name.
+[tool.hatch.build.targets.wheel]
+sources = ["."]
+
+[tool.hatch.build.targets.wheel.force-include]
+"__init__.py" = "domain/__init__.py"
+"snapshot.py" = "domain/snapshot.py"
+"period.py" = "domain/period.py"
+"geographic_area.py" = "domain/geographic_area.py"
+"py.typed" = "domain/py.typed"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "__init__.py",
+    "snapshot.py",
+    "period.py",
+    "geographic_area.py",
+    "py.typed",
+    "tests",
+    "pyproject.toml",
+]

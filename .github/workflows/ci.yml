@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-typecheck-test:
+    name: Lint · Typecheck · Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Pin Python
+        run: uv python install 3.12
+
+      - name: uv sync (all workspace packages + extras)
+        run: uv sync --all-packages --all-extras
+
+      - name: Lint (ruff)
+        run: make lint
+
+      - name: Typecheck (pyright)
+        run: make typecheck
+
+      - name: Test (fast — exclude integration)
+        run: make test-fast
+
+  validate-snapshot-files:
+    name: Validate committed data/*.json against SnapshotFile
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Pin Python
+        run: uv python install 3.12
+
+      - name: uv sync (all workspace packages)
+        run: uv sync --all-packages
+
+      - name: Validate every data/YYYY-MM-DD.json with pydantic.TypeAdapter(SnapshotFile)
+        run: |
+          uv run python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+          from pydantic import TypeAdapter, ValidationError
+          from packages.domain.snapshot import SnapshotFile
+
+          adapter = TypeAdapter(SnapshotFile)
+          data_dir = Path("data")
+          # Match exactly YYYY-MM-DD.json — exclude sources.json, overrides.json, etc.
+          snapshot_files = sorted(
+              p for p in data_dir.glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].json")
+          )
+          if not snapshot_files:
+              print("No data/YYYY-MM-DD.json files committed yet — nothing to validate.")
+              sys.exit(0)
+          failures = []
+          for f in snapshot_files:
+              payload = json.loads(f.read_text())
+              try:
+                  adapter.validate_python(payload)
+                  print(f"OK  {f}")
+              except ValidationError as e:
+                  print(f"FAIL {f}\n{e}")
+                  failures.append(f)
+          if failures:
+              print(f"\n{len(failures)} snapshot file(s) failed validation.")
+              sys.exit(1)
+          PY

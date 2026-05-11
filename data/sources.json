@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "sources": {
+    "redfin_csv": {
+      "failed_areas": {},
+      "freshness_tier": "weekly",
+      "last_run_at": "2026-05-11T12:00:00+00:00",
+      "license": "attribution",
+      "name": "redfin_csv",
+      "snapshot_file": null,
+      "status": "ok",
+      "successful_areas": [
+        "campbell",
+        "dublin",
+        "fremont",
+        "milpitas",
+        "mountain-view",
+        "pleasanton",
+        "sunnyvale"
+      ]
+    }
+  }
+}

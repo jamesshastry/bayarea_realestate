@@ -1,0 +1,35 @@
+[project]
+name = "bayre-adapters"
+version = "0.0.0"
+description = "Data-source adapters: Protocol + per-source ingest. Phase 0 ships Redfin CSV."
+requires-python = ">=3.12"
+dependencies = [
+    "bayre-domain",
+    "pydantic>=2.7",
+    "requests>=2.32",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+sources = ["."]
+
+[tool.hatch.build.targets.wheel.force-include]
+"__init__.py" = "adapters/__init__.py"
+"_base.py" = "adapters/_base.py"
+"redfin_csv.py" = "adapters/redfin_csv.py"
+"cli.py" = "adapters/cli.py"
+"py.typed" = "adapters/py.typed"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "__init__.py",
+    "_base.py",
+    "redfin_csv.py",
+    "cli.py",
+    "py.typed",
+    "tests",
+    "pyproject.toml",
+]

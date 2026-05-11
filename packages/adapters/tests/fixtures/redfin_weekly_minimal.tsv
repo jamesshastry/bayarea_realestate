@@ -1,0 +1,11 @@
+period_begin	period_end	region_type	region	property_type	median_sale_price	median_ppsf	median_days_on_market	average_sale_to_list_ratio	homes_sold	active_listings	new_listings	months_of_supply	percent_homes_sold_with_price_drops
+2026-04-13	2026-05-04	place	Fremont, CA	All Residential	1500000	950	18	1.02	142	89	102	1.9	14.5
+2026-04-13	2026-05-04	place	Dublin, CA	All Residential	1625000	780	22	1.01	38	51	44	2.1	18.2
+2026-04-13	2026-05-04	place	Pleasanton, CA	All Residential	1875000	850	15	1.04	61	72	83	1.7	11.1
+2026-04-13	2026-05-04	place	Milpitas, CA	All Residential	1395000	820	20	1.03	49	44	58	1.5	16.0
+2026-04-13	2026-05-04	place	Sunnyvale, CA	All Residential	2150000	1320	12	1.07	72	68	95	1.4	8.5
+2026-04-13	2026-05-04	place	Mountain View, CA	All Residential	2495000	1450	10	1.09	33	42	51	1.6	7.2
+2026-04-13	2026-05-04	place	Campbell, CA	All Residential	1675000	980	14	1.05	29	33	40	1.8	12.8
+2026-04-13	2026-05-04	place	Oakland, CA	All Residential	925000	620	30	0.99	185	312	290	2.6	22.4
+2026-04-06	2026-04-27	place	Fremont, CA	All Residential	1485000	945	19	1.01	138	92	100	1.9	15.0
+2026-04-13	2026-05-04	county	Alameda County, CA	All Residential	1100000	720	25	0.99	780	1450	1320	2.2	19.5

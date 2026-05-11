@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bay Area FTHB · Data status</title>
+  <meta name="generator" content="packages.observability.status_page">
+  <style>
+:root {
+  color-scheme: dark;
+  --bg: oklch(15% 0 0);
+  --surface: oklch(19% 0 0);
+  --border: oklch(28% 0 0);
+  --tx: oklch(90% 0.02 80);
+  --tx-muted: oklch(60% 0.02 80);
+  --green: oklch(75% 0.18 145);
+  --amber: oklch(82% 0.16 75);
+  --red: oklch(70% 0.21 25);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font: 14px/1.5 -apple-system, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  color: var(--tx);
+  background: var(--bg);
+  padding: 32px;
+}
+h1 { margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+.sub { color: var(--tx-muted); margin: 0 0 24px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+th {
+  background: oklch(22% 0 0);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--tx-muted);
+}
+tr:last-child td { border-bottom: 0; }
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-green { background: var(--green); box-shadow: 0 0 8px var(--green); }
+.dot-amber { background: var(--amber); box-shadow: 0 0 8px var(--amber); }
+.dot-red { background: var(--red); box-shadow: 0 0 8px var(--red); }
+code { font: 12px/1.4 ui-monospace, "SF Mono", Menlo, monospace; color: var(--tx); }
+details > summary { cursor: pointer; color: var(--tx-muted); }
+ul { margin: 8px 0 0 20px; padding: 0; }
+.footer { margin-top: 24px; color: var(--tx-muted); font-size: 12px; }
+.empty { padding: 40px; text-align: center; color: var(--tx-muted); }
+</style>
+</head>
+<body>
+  <h1>Data status</h1>
+  <p class="sub">
+    Per-source ingest health for the Bay Area FTHB pipeline.
+    Phase 0 stub — Phase 2 replaces this with <code>/v1/status</code>.
+    Generated 2026-05-11T16:54:53.959243+00:00.
+  </p>
+  
+        <table>
+          <thead>
+            <tr>
+              <th></th><th>Source</th><th>Tier</th><th>Last run (UTC)</th>
+              <th>OK</th><th>Failed</th><th>Snapshot file</th>
+              <th>License</th><th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+    <tr class="state-green">
+      <td><span class="dot dot-green" aria-label="green"></span></td>
+      <td><code>redfin_csv</code></td>
+      <td>weekly</td>
+      <td>2026-05-11T12:00:00+00:00</td>
+      <td>7</td>
+      <td>&mdash;</td>
+      <td><em>none</em></td>
+      <td>attribution</td>
+      <td>Healthy (4.9h ago, 7 area(s) ok).</td>
+    </tr>
+    </tbody>
+        </table>
+        
+  <p class="footer">
+    Sources file: <code>data/sources.json</code>.
+    Stale-thresholds per freshness tier per <code>NF-DAT-06</code>.
+  </p>
+</body>
+</html>

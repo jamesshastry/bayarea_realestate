@@ -1,0 +1,70 @@
+name: Weekly Redfin ingest
+
+# Thursday 18:00 UTC = 1pm ET (after Redfin's weekly publish), per
+# `docs/implementation-plan.md` Phase 0 + `docs/design.md` §4.2.
+on:
+  schedule:
+    - cron: "0 18 * * 4"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write   # so the workflow can commit data/*.json + status/index.html
+
+jobs:
+  ingest:
+    name: Run Redfin adapter, write snapshot + status, commit
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Use the default GITHUB_TOKEN; permissions: contents:write above.
+          persist-credentials: true
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Pin Python
+        run: uv python install 3.12
+
+      - name: uv sync (all workspace packages)
+        run: uv sync --all-packages
+
+      - name: Run weekly ingest (writes data/YYYY-MM-DD.json + data/sources.json)
+        run: make ingest
+
+      - name: Regenerate static status page
+        run: make status
+
+      - name: Validate the freshly-written snapshot
+        run: |
+          uv run python - <<'PY'
+          import json
+          from pathlib import Path
+          from pydantic import TypeAdapter
+          from packages.domain.snapshot import SnapshotFile
+          adapter = TypeAdapter(SnapshotFile)
+          newest = max(
+              Path("data").glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].json"),
+              key=lambda p: p.stat().st_mtime,
+          )
+          adapter.validate_python(json.loads(newest.read_text()))
+          print(f"Validated {newest}")
+          PY
+
+      - name: Commit & push artifacts
+        env:
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          git add data/*.json status/index.html data/bronze
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore(ingest): weekly Redfin snapshot $(date -u +%Y-%m-%d)"
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
