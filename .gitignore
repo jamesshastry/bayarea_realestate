@@ -28,7 +28,10 @@ dist/
 *.key
 
 # Data / build outputs
-data/bronze/
+# Bronze is intentionally tracked in git through Phase 0 — the adapter caches
+# the *filtered* single row per city (~1 KB), not the 1 GB upstream tracker,
+# so it stays small and useful as an audit trail. Move to R2 once cumulative
+# size > ~50 MB (per docs/runbooks/redfin-csv-source.md).
 data/silver/
 data/gold/
 dashboard/index.html
