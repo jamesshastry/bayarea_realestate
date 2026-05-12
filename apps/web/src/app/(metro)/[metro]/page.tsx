@@ -47,7 +47,7 @@ export default async function MetroOverviewPage({
             className="block p-4 bg-surface border border-border rounded hover:border-info transition-colors"
           >
             <div className="font-mono text-tx">{c.name}</div>
-            <div className="text-xs text-tx-muted mt-1">{c.county_name} County</div>
+            <div className="text-xs text-tx-muted mt-1">{c.county_name}</div>
           </Link>
         ))}
       </div>
