@@ -48,14 +48,26 @@ export default async function MetroOverviewPage({
           >
             <div className="font-mono text-tx">{c.name}</div>
             <div className="text-xs text-tx-muted mt-1">{c.county_name}</div>
+            <div className="text-sm font-mono text-tx mt-2">
+              {formatMedian(c.median_price)}
+            </div>
           </Link>
         ))}
       </div>
 
       <p className="mt-8 text-xs text-tx-muted">
-        Data live from Neon. Snapshot ingest, school zones, and timing pages
-        wire in over Phase 2 / 3.
+        Data live from Neon. Median sale price is the latest{" "}
+        <code className="font-mono">All Residential</code> snapshot from the
+        Redfin Data Center monthly city tracker.
       </p>
     </div>
   );
+}
+
+function formatMedian(raw: string | null): string {
+  if (raw === null) return "no data yet";
+  const n = Number(raw);
+  if (!Number.isFinite(n)) return "no data yet";
+  if (n >= 1_000_000) return `$${(n / 1_000_000).toFixed(2)}M`;
+  return `$${Math.round(n).toLocaleString()}`;
 }

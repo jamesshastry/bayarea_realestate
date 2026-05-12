@@ -171,6 +171,18 @@ requires-dist = [{ name = "pydantic", specifier = ">=2.7" }]
 name = "bayre-etl"
 version = "0.0.0"
 source = { editable = "packages/etl" }
+dependencies = [
+    { name = "asyncpg" },
+    { name = "bayre-domain" },
+    { name = "python-dotenv" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "asyncpg", specifier = ">=0.29" },
+    { name = "bayre-domain", editable = "packages/domain" },
+    { name = "python-dotenv", specifier = ">=1.0" },
+]
 
 [[package]]
 name = "bayre-finance"

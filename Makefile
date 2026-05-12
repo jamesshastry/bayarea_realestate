@@ -59,6 +59,18 @@ migrate-status:
 verify-seed:
 	uv run python infra/migrations/verify_seed.py
 
+# ── Snapshot loader ─────────────────────────────────────────────────────
+# Push a Phase 0 snapshot JSON into the market_snapshot table.
+load-snapshot:
+	@if [ -z "$(FILE)" ]; then echo "Usage: make load-snapshot FILE=data/YYYY-MM-DD.json"; exit 1; fi
+	uv run python -m etl.load_snapshots $(FILE)
+
+load-latest:
+	uv run python -m etl.load_snapshots --latest
+
+load-latest-dry:
+	uv run python -m etl.load_snapshots --latest --dry-run
+
 # ── Cleanup ────────────────────────────────────────────────────────────
 clean:
 	rm -rf .pytest_cache .ruff_cache .mypy_cache htmlcov .coverage

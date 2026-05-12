@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     # Streaming the 991 MB compressed tracker takes a few minutes on Actions.
     timeout-minutes: 30
+    # Job-level env so the "Load snapshot into Neon" step's `if:` can see it.
+    # GitHub Actions forbids `secrets.*` in `if:` directly, so we map it via env.
+    env:
+      HAS_DB: ${{ secrets.DATABASE_URL_DIRECT != '' && 'true' || 'false' }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -56,6 +60,18 @@ jobs:
           adapter.validate_python(json.loads(newest.read_text()))
           print(f"Validated {newest}")
           PY
+
+      # Push the freshly-written snapshot into market_snapshot. Skipped when
+      # DATABASE_URL_DIRECT isn't set as a repository secret (lets fork CI /
+      # local dry-runs of the workflow still pass).
+      #
+      # GitHub Actions forbids `secrets.*` in `if:` conditions, so we copy
+      # the secret to a job-level env var first and gate on its presence.
+      - name: Load snapshot into Neon
+        if: env.HAS_DB == 'true'
+        env:
+          DATABASE_URL_DIRECT: ${{ secrets.DATABASE_URL_DIRECT }}
+        run: make load-latest
 
       - name: Commit & push artifacts
         env:
