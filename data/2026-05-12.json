@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "as_of_period": "2026-04",
-  "scraped_at": "2026-05-12T09:17:24.261930Z",
+  "as_of_period": "2026-03",
+  "scraped_at": "2026-05-12T09:23:09.500679Z",
   "cities": [
     {
       "slug": "dublin",
@@ -24,7 +24,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 90,
@@ -52,7 +52,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 90,
@@ -80,7 +80,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 90,
@@ -108,7 +108,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 90,
@@ -136,7 +136,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 90,
@@ -164,7 +164,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 80,
@@ -192,7 +192,7 @@
       "condo": null,
       "data_quality": {
         "sources": [
-          "redfin_csv:2026-04"
+          "redfin_csv:2026-03"
         ],
         "as_of": "2026-03-31",
         "confidence": 80,

@@ -161,6 +161,12 @@ def _strip_quotes(s: str) -> str:
     return s.strip().strip('"')
 
 
+def _month_from_period_begin(raw: str) -> Month:
+    """Build a Month from Redfin's PERIOD_BEGIN (`YYYY-MM-01` ISO date)."""
+    d = _parse_iso_date(raw)
+    return Month(year=d.year, month=d.month)
+
+
 def _bronze_path(data_root: Path, period: Month, slug: str) -> Path:
     """`data/bronze/redfin/{YYYY-MM}/{slug}.tsv` per Phase 0 contract."""
     return data_root / "bronze" / "redfin" / str(period) / f"{slug}.tsv"
@@ -353,15 +359,19 @@ class RedfinCsvAdapter:
             )
             candidates[slug] = best
 
-        # Materialize → RawSnapshot per city.
+        # Materialize → RawSnapshot per city. Each snapshot's `period` reflects
+        # the row's actual PERIOD_BEGIN (which may be older than `period` when
+        # Redfin hasn't published the requested month yet). Bronze still nests
+        # under the requested-month directory so re-running the same `make
+        # ingest` is idempotent for caching purposes.
         now = datetime.now(tz=UTC)
         out: dict[str, RawSnapshot] = {}
         for slug, row in candidates.items():
-            cfg = next(c for c in target_cities if c["slug"] == slug)
+            actual_period = _month_from_period_begin(row["PERIOD_BEGIN"])
             bronze_path = self._write_bronze(row, period, slug)
             out[slug] = RawSnapshot(
                 area_slug=slug,
-                period=period,
+                period=actual_period,
                 metrics=self._row_to_metrics(row),
                 source=self.name,
                 fetched_at=now,

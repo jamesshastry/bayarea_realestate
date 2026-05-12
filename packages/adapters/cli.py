@@ -219,6 +219,7 @@ def run_redfin(
         failed = {cfg["slug"]: f"{type(e).__name__}: {e}" for cfg in SEED_CITIES}
         raw_by_slug = {}
 
+    actual_periods: list[Month] = []
     for cfg in SEED_CITIES:
         slug = cfg["slug"]
         if slug not in raw_by_slug:
@@ -227,6 +228,9 @@ def run_redfin(
             continue
         try:
             successful.append(_to_city_snapshot(raw_by_slug[slug]))
+            raw_period = raw_by_slug[slug].period
+            if isinstance(raw_period, Month):
+                actual_periods.append(raw_period)
         except Exception as e:
             log.warning("Snapshot assembly failure for %s: %s", slug, e)
             failed[slug] = f"{type(e).__name__}: {e}"
@@ -245,9 +249,17 @@ def run_redfin(
             f"Redfin ingest produced 0 successful cities; failures: {failed!r}"
         )
 
+    # File-level `as_of_period` reflects the actual data delivered, not what
+    # was requested. When Redfin hasn't published the requested month yet,
+    # the streaming filter falls back to the most-recent available month per
+    # city — `actual_periods` collects those, and we take the latest. Falls
+    # back to the requested month if (somehow) no city carried a Month period.
+    # Month doesn't implement __lt__; sort by stringified ISO form
+    # (lex == chrono for YYYY-MM).
+    file_period = max(actual_periods, key=str) if actual_periods else month
     snap = SnapshotFile(
         schema_version=SCHEMA_VERSION,
-        as_of_period=str(month),
+        as_of_period=str(file_period),
         scraped_at=datetime.now(tz=UTC),
         cities=successful,
     )
