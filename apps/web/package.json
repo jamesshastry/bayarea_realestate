@@ -21,7 +21,8 @@
     "lucide-react": "^0.460.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4"
+    "tailwind-merge": "^2.5.4",
+    "postgres": "^3.4.4"
   },
   "devDependencies": {
     "@types/node": "^22.7.0",
