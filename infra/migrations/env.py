@@ -30,6 +30,16 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 _REPO_ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(_REPO_ROOT / "apps" / "api" / "src"))
 
+# Load `.env` from the repo root before reading DATABASE_URL_DIRECT. Avoids the
+# `set -a; . .env` shell trick, which mis-parses `&` in connection strings.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(_REPO_ROOT / ".env")
+except ImportError:
+    # python-dotenv is optional — env vars set externally still work.
+    pass
+
 # Importing the models package registers every table on `Base.metadata`.
 from bayre_api.models import Base  # noqa: E402
 
@@ -41,15 +51,39 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 
+_LIBPQ_ONLY_PARAMS = {"sslmode", "channel_binding", "sslrootcert", "sslcert", "sslkey"}
+
+
 def _normalize_async_url(url: str) -> str:
-    """Coerce vanilla `postgresql://` to `postgresql+asyncpg://` for the engine."""
-    if url.startswith("postgresql+asyncpg://"):
-        return url
-    if url.startswith("postgresql://"):
-        return "postgresql+asyncpg://" + url[len("postgresql://") :]
+    """Coerce vanilla `postgresql://` → `postgresql+asyncpg://` and strip libpq
+    query params asyncpg doesn't accept (`sslmode`, `channel_binding`, …).
+
+    Neon's connection string uses libpq syntax (`?sslmode=require&channel_binding=require`),
+    but asyncpg uses `ssl=` directly via `connect_args`. We pop the libpq-specific
+    params here and `_async_connect_args()` re-introduces SSL via the asyncpg API.
+    """
+    from urllib.parse import urlencode, urlsplit, urlunsplit
+
     if url.startswith("postgres://"):
-        return "postgresql+asyncpg://" + url[len("postgres://") :]
-    return url
+        url = "postgresql://" + url[len("postgres://") :]
+    if url.startswith("postgresql://"):
+        url = "postgresql+asyncpg://" + url[len("postgresql://") :]
+
+    parts = urlsplit(url)
+    qs_pairs = [
+        (k, v)
+        for k, v in [p.split("=", 1) for p in parts.query.split("&") if "=" in p]
+        if k not in _LIBPQ_ONLY_PARAMS
+    ]
+    cleaned_query = urlencode(qs_pairs)
+    return urlunsplit(
+        (parts.scheme, parts.netloc, parts.path, cleaned_query, parts.fragment)
+    )
+
+
+def _async_connect_args() -> dict[str, object]:
+    """asyncpg connect_args that mirror Neon's `?sslmode=require&channel_binding=require`."""
+    return {"ssl": "require"}
 
 
 def _get_url() -> str:
@@ -100,6 +134,7 @@ async def run_migrations_online() -> None:
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
         future=True,
+        connect_args=_async_connect_args(),
     )
     async with connectable.connect() as connection:
         await connection.run_sync(_do_run_migrations)

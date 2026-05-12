@@ -33,6 +33,25 @@ status:
 		--sources data/sources.json \
 		--output status/index.html
 
+# ── Database (Neon) ────────────────────────────────────────────────────
+# Alembic env.py auto-loads .env via python-dotenv, so no shell sourcing
+# (which would mis-parse `&` in connection strings).
+# `script_location` in alembic.ini is repo-root-relative, so we MUST invoke
+# from the repo root and point -c at the config file.
+migrate:
+	uv run alembic -c infra/migrations/alembic.ini upgrade head
+
+migrate-down:
+	uv run alembic -c infra/migrations/alembic.ini downgrade -1
+
+migrate-status:
+	uv run alembic -c infra/migrations/alembic.ini current
+	uv run alembic -c infra/migrations/alembic.ini history --verbose
+
+# Verify the §9 acceptance queries from docs/seed-data.md
+verify-seed:
+	uv run python infra/migrations/verify_seed.py
+
 # ── Cleanup ────────────────────────────────────────────────────────────
 clean:
 	rm -rf .pytest_cache .ruff_cache .mypy_cache htmlcov .coverage

@@ -68,7 +68,9 @@ def upgrade() -> None:
     # ── Extensions ─────────────────────────────────────────────────────────
     op.execute("CREATE EXTENSION IF NOT EXISTS postgis;")
     op.execute("CREATE EXTENSION IF NOT EXISTS pgcrypto;")
-    op.execute("CREATE EXTENSION IF NOT EXISTS btree_gist;")  # for the EXCLUDE on attendance_zone
+    op.execute(
+        "CREATE EXTENSION IF NOT EXISTS btree_gist;"
+    )  # for the EXCLUDE on attendance_zone
 
     # ── Enums ──────────────────────────────────────────────────────────────
     op.execute(f"CREATE TYPE geo_kind AS ENUM ({_enum_values(GEO_KIND)});")
@@ -112,7 +114,9 @@ def upgrade() -> None:
     # once boundaries land.
 
     op.execute("CREATE INDEX idx_geo_geom ON geographic_area USING GIST (geometry);")
-    op.execute("CREATE INDEX idx_geo_centroid ON geographic_area USING GIST (centroid);")
+    op.execute(
+        "CREATE INDEX idx_geo_centroid ON geographic_area USING GIST (centroid);"
+    )
     op.execute("CREATE INDEX idx_geo_kind_metro ON geographic_area (metro_id, kind);")
     op.execute("CREATE INDEX idx_geo_parent ON geographic_area (parent_id);")
     op.execute("CREATE INDEX idx_geo_slug ON geographic_area (slug);")
@@ -238,8 +242,12 @@ def upgrade() -> None:
         """
     )
     op.execute("CREATE INDEX idx_listing_parcel ON listing (parcel_id);")
-    op.execute("CREATE INDEX idx_listing_status_sold ON listing (sold_date) WHERE status = 'sold';")
-    op.execute("CREATE INDEX idx_listing_active ON listing (status) WHERE status = 'active';")
+    op.execute(
+        "CREATE INDEX idx_listing_status_sold ON listing (sold_date) WHERE status = 'sold';"
+    )
+    op.execute(
+        "CREATE INDEX idx_listing_active ON listing (status) WHERE status = 'active';"
+    )
 
     # ── sale (materialized view) ───────────────────────────────────────────
     op.execute(
@@ -356,14 +364,25 @@ def upgrade() -> None:
         );
         """
     )
-    op.execute("CREATE INDEX idx_signal_area_time ON market_signal (area_id, computed_at DESC);")
+    op.execute(
+        "CREATE INDEX idx_signal_area_time ON market_signal (area_id, computed_at DESC);"
+    )
     op.execute("CREATE INDEX idx_signal_seq ON market_signal (id);")
-    op.execute("CREATE INDEX idx_signal_kind_time ON market_signal (kind, computed_at DESC);")
+    op.execute(
+        "CREATE INDEX idx_signal_kind_time ON market_signal (kind, computed_at DESC);"
+    )
     # Idempotency dedupe — expression index, can't be expressed via SQLAlchemy.
+    # `computed_at` is timestamptz, so the bare `::date` cast isn't IMMUTABLE
+    # (it depends on session TimeZone). Anchor to UTC to make it deterministic.
     op.execute(
         """
         CREATE UNIQUE INDEX idx_signal_dedupe
-          ON market_signal (area_id, kind, (payload->>'dedupe_key'), ((computed_at)::date));
+          ON market_signal (
+            area_id,
+            kind,
+            (payload->>'dedupe_key'),
+            ((computed_at AT TIME ZONE 'UTC')::date)
+          );
         """
     )
 
@@ -404,8 +423,12 @@ def upgrade() -> None:
         );
         """
     )
-    op.execute("CREATE INDEX idx_fetch_source_time ON source_fetch (source_id, fetched_at DESC);")
-    op.execute("CREATE INDEX idx_fetch_area_time ON source_fetch (area_id, fetched_at DESC);")
+    op.execute(
+        "CREATE INDEX idx_fetch_source_time ON source_fetch (source_id, fetched_at DESC);"
+    )
+    op.execute(
+        "CREATE INDEX idx_fetch_area_time ON source_fetch (area_id, fetched_at DESC);"
+    )
 
 
 def downgrade() -> None:
