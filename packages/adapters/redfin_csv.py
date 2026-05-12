@@ -1,21 +1,25 @@
-"""Redfin Data Center weekly market-data adapter.
+"""Redfin Data Center monthly market-data adapter.
 
-Redfin publishes [Weekly Housing Market Data](https://www.redfin.com/news/data-center/)
-every Thursday around 1pm ET. The file lives at a stable URL (TSV / gzip'd TSV)
-and contains one row per (region x property_type x period_end). For Bay Area
-work we filter to `region_type == 'place'` (city) and the 7 seed cities by
-their Redfin region name.
+Redfin publishes [the City Market Tracker](https://www.redfin.com/news/data-center/)
+as a monthly aggregate per city × property type. The previous weekly file
+(`weekly_housing_market_data_most_recent.tsv000.gz`) was retired from the
+public bucket; the live source is now the ~1 GB monthly tracker.
 
 This adapter:
-  1. Downloads the weekly TSV from Redfin's public S3 bucket
-     (license: personal/non-commercial use confirmed by user 2026-05-11 —
-     see `docs/runbooks/redfin-csv-source.md`).
-  2. Caches the raw payload to `data/bronze/redfin/{iso_week}/{slug}.tsv`
-     **before** parsing — Bronze immutability per `docs/implementation-plan.md`
-     Phase 0 deliverable list.
-  3. Parses + filters to the requested city, returning a `RawSnapshot`.
+  1. **Streams** the gzip TSV directly from Redfin's public S3 bucket, gunzips
+     line-by-line (the file is ~1 GB compressed; loading it whole would OOM
+     a GitHub Actions runner).
+  2. Filters in one pass to the 7 seed cities + `PROPERTY_TYPE='All Residential'`,
+     keeping only the requested calendar month's row per city.
+  3. Caches the **filtered** TSV slice (a few KB) to
+     `data/bronze/redfin/{YYYY-MM}/{slug}.tsv` — Bronze immutability per
+     `docs/implementation-plan.md` Phase 0. We don't cache the full upstream
+     file because the storage / GC cost isn't worth it.
+  4. Returns one `RawSnapshot` per city per call.
 
-`freshness_tier` for everything we emit is `weekly`.
+`freshness_tier` for everything we emit is `monthly`. License: personal /
+non-commercial use confirmed by user 2026-05-11 — see
+`docs/runbooks/redfin-csv-source.md`.
 """
 
 from __future__ import annotations
@@ -24,7 +28,7 @@ import csv
 import gzip
 import io
 import logging
-from collections.abc import Callable, Iterable, Mapping
+from collections.abc import Callable, Iterable, Iterator, Mapping
 from dataclasses import dataclass, field
 from datetime import UTC, date, datetime
 from decimal import Decimal, InvalidOperation
@@ -32,7 +36,7 @@ from pathlib import Path
 
 import requests
 from domain.geographic_area import GeographicArea
-from domain.period import Period, Week
+from domain.period import Month, Period
 
 from ._base import (
     Capability,
@@ -48,22 +52,13 @@ log = logging.getLogger(__name__)
 
 # ── Constants ───────────────────────────────────────────────────────────────
 
-# Redfin's public TSV. Both the "most recent" snapshot and the historical
-# series live at stable paths. Phase 0 only needs the most-recent file.
-DEFAULT_REDFIN_WEEKLY_URL = (
+# Redfin's monthly per-city tracker. ~991 MB compressed as of 2026-05.
+DEFAULT_REDFIN_CITY_URL = (
     "https://redfin-public-data.s3-us-west-2.amazonaws.com/"
-    "redfin_market_tracker/weekly_housing_market_data_most_recent.tsv000.gz"
+    "redfin_market_tracker/city_market_tracker.tsv000.gz"
 )
 
-# 7 seed cities per `docs/seed-data.md` §2.1. Slugs are the canonical product
-# slugs (`docs/seed-data.md` §2). `redfin_region_name` is the literal value
-# Redfin's CSV uses in the `region` column for `region_type='place'`.
-#
-# TODO(verify): re-confirm `redfin_region_name` strings against an actual
-# Redfin Data Center download — the city-name + ", CA" pattern is what they
-# use for ZHVI and most weekly tables, but the exact string varies (some have
-# "city, CA", some "City, California"). First real run with the workflow will
-# surface any miss; fix here.
+# 7 seed cities per `docs/seed-data.md` §2.1.
 SEED_CITIES: tuple[dict[str, str], ...] = (
     # Alameda County
     {
@@ -112,20 +107,24 @@ SEED_CITIES: tuple[dict[str, str], ...] = (
 )
 
 
-# Map from Redfin TSV column name → (Capability, unit). Adding a column means
-# adding it here and (if it's a new capability) to the Capability enum.
-# Numeric strings come in cleanly; we coerce in `_parse_decimal`.
+# Map from Redfin TSV column name (ALL_CAPS in the city tracker) → (Capability, unit).
+# Adding a column means adding it here and (if it's a new capability) to the
+# Capability enum.
 _COLUMN_TO_METRIC: Mapping[str, tuple[Capability, str]] = {
-    "median_sale_price": (Capability.MEDIAN_PRICE, "USD"),
-    "median_ppsf": (Capability.PPSF, "USD/sqft"),
-    "median_days_on_market": (Capability.DOM, "days"),
-    "average_sale_to_list_ratio": (Capability.SALE_TO_LIST, "ratio"),
-    "homes_sold": (Capability.HOMES_SOLD, "count"),
-    "active_listings": (Capability.INVENTORY, "count"),
-    "new_listings": (Capability.NEW_LISTINGS, "count"),
-    "months_of_supply": (Capability.MONTHS_OF_SUPPLY, "months"),
-    "percent_homes_sold_with_price_drops": (Capability.PCT_PRICE_DROPS, "pct"),
+    "MEDIAN_SALE_PRICE": (Capability.MEDIAN_PRICE, "USD"),
+    "MEDIAN_PPSF": (Capability.PPSF, "USD/sqft"),
+    "MEDIAN_DOM": (Capability.DOM, "days"),
+    "AVG_SALE_TO_LIST": (Capability.SALE_TO_LIST, "ratio"),
+    "HOMES_SOLD": (Capability.HOMES_SOLD, "count"),
+    "INVENTORY": (Capability.INVENTORY, "count"),
+    "NEW_LISTINGS": (Capability.NEW_LISTINGS, "count"),
+    "MONTHS_OF_SUPPLY": (Capability.MONTHS_OF_SUPPLY, "months"),
+    "PRICE_DROPS": (Capability.PCT_PRICE_DROPS, "pct"),
 }
+
+# Filter constants (match Redfin's exact strings — quotes are stripped per row)
+_TARGET_REGION_TYPE = "place"
+_TARGET_PROPERTY_TYPE = "All Residential"
 
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
@@ -133,10 +132,10 @@ _COLUMN_TO_METRIC: Mapping[str, tuple[Capability, str]] = {
 
 def _parse_decimal(raw: str | None) -> Decimal | None:
     """Permissive: accept dollar signs, percents, commas. Returns None for
-    blanks or sentinel values Redfin uses ('', '-', 'N/A')."""
+    blanks or sentinel values Redfin uses ('', '-', 'N/A', 'NA')."""
     if raw is None:
         return None
-    s = raw.strip()
+    s = raw.strip().strip('"')
     if s == "" or s in {"-", "N/A", "NA", "null", "None"}:
         return None
     s = s.replace("$", "").replace(",", "").replace("%", "").strip()
@@ -155,12 +154,16 @@ def _parse_int(raw: str | None) -> int | None:
 
 
 def _parse_iso_date(raw: str) -> date:
-    return date.fromisoformat(raw.strip())
+    return date.fromisoformat(raw.strip().strip('"'))
 
 
-def _bronze_path(data_root: Path, iso_week: str, slug: str) -> Path:
-    """`data/bronze/redfin/{iso_week}/{slug}.tsv` per Phase 0 contract."""
-    return data_root / "bronze" / "redfin" / iso_week / f"{slug}.tsv"
+def _strip_quotes(s: str) -> str:
+    return s.strip().strip('"')
+
+
+def _bronze_path(data_root: Path, period: Month, slug: str) -> Path:
+    """`data/bronze/redfin/{YYYY-MM}/{slug}.tsv` per Phase 0 contract."""
+    return data_root / "bronze" / "redfin" / str(period) / f"{slug}.tsv"
 
 
 # ── Adapter ─────────────────────────────────────────────────────────────────
@@ -174,20 +177,46 @@ def _default_data_root() -> Path:
     return Path(__file__).resolve().parents[2] / "data"
 
 
+def _default_stream_factory(url: str, timeout: int) -> Iterator[bytes]:
+    """Open the URL, gunzip on the fly, yield raw decompressed bytes in chunks.
+
+    The default impl uses `requests.get(stream=True)` + `gzip.GzipFile`.
+    Tests inject a different factory that yields from a local fixture file.
+    """
+    response = requests.get(
+        url,
+        stream=True,
+        timeout=timeout,
+        # AWS S3 sometimes serves 403 to clients with no User-Agent; be polite.
+        headers={
+            "User-Agent": "bayre-realestate/0.1 (+https://github.com/jamesshastry/bayarea_realestate)"
+        },
+    )
+    response.raise_for_status()
+    gz = gzip.GzipFile(fileobj=response.raw)
+    while True:
+        chunk = gz.read(64 * 1024)
+        if not chunk:
+            break
+        yield chunk
+
+
+# Type for the streaming factory: takes (url, timeout) → iterator of bytes.
+StreamFactory = Callable[[str, int], Iterator[bytes]]
+
+
 @dataclass
 class RedfinCsvAdapter:
-    """Implements `DataSourceAdapter` for Redfin Data Center weekly CSVs."""
+    """Implements `DataSourceAdapter` for Redfin Data Center monthly CSVs."""
 
     name: str = "redfin_csv"
     license: License = "attribution"
     capabilities: set[Capability] = field(default_factory=_default_capabilities)
     data_root: Path = field(default_factory=_default_data_root)
-    url: str = DEFAULT_REDFIN_WEEKLY_URL
-    timeout_seconds: int = 30
-    # Injected for tests; default uses `requests.get` so the `responses`
-    # library can intercept. Typed as Callable returning Any because requests
-    # has no proper type stubs in this project.
-    http_get: Callable[..., object] = field(default=requests.get)
+    url: str = DEFAULT_REDFIN_CITY_URL
+    timeout_seconds: int = 600  # 10 minutes — the file is ~1 GB compressed
+    # Test injection — yields decompressed TSV bytes in chunks.
+    stream_factory: StreamFactory = field(default=_default_stream_factory)
 
     # ── Protocol methods ─────────────────────────────────────────────────
 
@@ -197,10 +226,7 @@ class RedfinCsvAdapter:
         return any(cfg["slug"] == area.slug for cfg in SEED_CITIES)
 
     def reliability(self, capability: Capability) -> float:
-        """Rough reliability priors per `docs/design.md` §3.4 (Redfin is the
-        primary weekly source for FTHB use case)."""
-        # Higher confidence on the metrics Redfin reports natively; lower on
-        # derived ones (months_of_supply is computed downstream by Redfin).
+        """Rough reliability priors per `docs/design.md` §3.4."""
         high = {
             Capability.MEDIAN_PRICE,
             Capability.PPSF,
@@ -217,29 +243,37 @@ class RedfinCsvAdapter:
         return 0.0
 
     def fetch(self, area: GeographicArea, period: Period) -> RawSnapshot:
-        if not isinstance(period, Week):
+        """Single-city fetch.
+
+        The single-city signature satisfies the Protocol; if you're fetching
+        multiple seed cities, call `fetch_all_seed_cities` instead — it streams
+        once and emits N RawSnapshots, which is *much* cheaper than N full
+        downloads of the 1 GB tracker.
+        """
+        if not isinstance(period, Month):
             raise FetchError(
-                f"Redfin CSV adapter is weekly-tier only; got period kind={period.kind!r}"
+                f"Redfin CSV adapter is monthly-tier only; got period kind={period.kind!r}"
             )
         cfg = self._city_config(area.slug)
-        raw_bytes = self._download(self.url)
-        bronze_path = self._write_bronze(raw_bytes, period, area.slug)
-        text = self._decode(raw_bytes)
-        row = self._extract_city_row(text, cfg["redfin_region_name"], period)
-        metrics = self._row_to_metrics(row)
-        return RawSnapshot(
-            area_slug=area.slug,
-            period=period,
-            metrics=metrics,
-            source=self.name,
-            fetched_at=datetime.now(tz=UTC),
-            source_published_at=datetime.combine(
-                _parse_iso_date(row["period_end"]),
-                datetime.min.time(),
-                tzinfo=UTC,
-            ),
-            bronze_path=str(bronze_path.relative_to(self.data_root.parent)),
-        )
+        snapshots = self._stream_and_filter([cfg], period)
+        if cfg["slug"] not in snapshots:
+            raise ParseError(
+                f"No Redfin row matched region={cfg['redfin_region_name']!r} for {period}"
+            )
+        return snapshots[cfg["slug"]]
+
+    def fetch_all_seed_cities(self, period: Period) -> dict[str, RawSnapshot]:
+        """One streaming pass → one RawSnapshot per seed city.
+
+        Returns a dict keyed by slug. Cities that didn't match (e.g. Redfin
+        hasn't published the requested month yet for that city) are *omitted*
+        — the caller logs them as failures.
+        """
+        if not isinstance(period, Month):
+            raise FetchError(
+                f"Redfin CSV adapter is monthly-tier only; got period kind={period.kind!r}"
+            )
+        return self._stream_and_filter(list(SEED_CITIES), period)
 
     # ── Internals ────────────────────────────────────────────────────────
 
@@ -249,101 +283,123 @@ class RedfinCsvAdapter:
                 return cfg
         raise FetchError(f"No Redfin region mapping for slug {slug!r}")
 
-    def _download(self, url: str) -> bytes:
-        try:
-            response = self.http_get(url, timeout=self.timeout_seconds)
-        except requests.RequestException as e:
-            raise FetchError(f"HTTP error downloading {url}: {e}") from e
-        # `responses` and `requests` both provide a Response with .status_code
-        # and .content; we don't want to depend on requests' types directly so
-        # we use getattr-style access with explicit casts.
-        status_code: int = getattr(response, "status_code", 200)
-        if status_code >= 400:
-            raise FetchError(f"HTTP {status_code} downloading {url}")
-        content: bytes = getattr(response, "content", b"")
-        return content
+    def _stream_and_filter(
+        self,
+        target_cities: list[dict[str, str]],
+        period: Month,
+    ) -> dict[str, RawSnapshot]:
+        """Streaming filter: scan the gunzipped TSV once, keep only rows
+        matching one of `target_cities` AND `PROPERTY_TYPE='All Residential'`,
+        retain the row whose `PERIOD_BEGIN` matches `period`."""
 
-    @staticmethod
-    def _decode(raw_bytes: bytes) -> str:
-        # Redfin's "_most_recent.tsv000.gz" is gzip-compressed TSV; raw fixtures
-        # in tests are plain TSV. Sniff the magic bytes.
-        if raw_bytes[:2] == b"\x1f\x8b":
-            try:
-                raw_bytes = gzip.decompress(raw_bytes)
-            except OSError as e:
-                raise ParseError(f"Gzip decode failed: {e}") from e
-        try:
-            return raw_bytes.decode("utf-8")
-        except UnicodeDecodeError as e:
-            raise ParseError(f"UTF-8 decode failed: {e}") from e
+        target_regions = {cfg["redfin_region_name"]: cfg for cfg in target_cities}
+        target_first_day = period.first_day().isoformat()
 
-    def _write_bronze(self, raw_bytes: bytes, period: Week, slug: str) -> Path:
-        path = _bronze_path(self.data_root, str(period), slug)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        # Bronze immutability: write-if-not-exists. The same (week, city) should
-        # never be re-fetched into a different file; if it already exists,
-        # trust it. (Re-running ETL idempotently is a Phase 0 requirement.)
-        if not path.exists():
-            # Decode for storage so it's grep-able and small (gzip is the
-            # transport layer, not the storage layer here).
-            text = self._decode(raw_bytes)
-            path.write_text(text, encoding="utf-8")
-        return path
-
-    def _extract_city_row(
-        self, tsv_text: str, redfin_region_name: str, period: Week
-    ) -> dict[str, str]:
-        """Filter the multi-region TSV down to one row for this city + week.
-
-        Match logic:
-          - region_type == 'place' (city)
-          - region == the configured Redfin name
-          - property_type == 'All Residential' (top-level summary)
-          - period_end falls inside the requested ISO week (Redfin uses 4-week
-            rolling windows; we want the row whose period_end is the most
-            recent date within or before the week's Sunday).
-        """
-        reader = csv.DictReader(io.StringIO(tsv_text), delimiter="\t")
+        # The streaming TSV reader: bytes → text lines → DictReader
+        bytes_iter = self.stream_factory(self.url, self.timeout_seconds)
+        text_iter = _bytes_to_text_lines(bytes_iter)
+        reader = csv.DictReader(text_iter, delimiter="\t")
         if reader.fieldnames is None:
             raise ParseError("Redfin TSV has no header row")
-        required = {"region_type", "region", "property_type", "period_end"}
+        # Normalize fieldnames (strip surrounding quotes Redfin emits).
+        reader.fieldnames = [_strip_quotes(f) for f in reader.fieldnames]
+        required = {
+            "REGION_TYPE",
+            "REGION",
+            "PROPERTY_TYPE",
+            "PERIOD_BEGIN",
+            "PERIOD_END",
+        }
         missing = required - set(reader.fieldnames)
         if missing:
             raise ParseError(
-                f"Redfin TSV missing required columns: {sorted(missing)}; got {reader.fieldnames!r}"
-            )
-        target_sunday = period.sunday()
-        candidates = [
-            row
-            for row in reader
-            if row.get("region_type") == "place"
-            and row.get("region") == redfin_region_name
-            and row.get("property_type") in {"All Residential", "All Homes", ""}
-        ]
-        if not candidates:
-            raise ParseError(
-                f"No Redfin rows matched region={redfin_region_name!r} "
-                f"with region_type='place' and property_type in "
-                f"{{'All Residential','All Homes',''}}"
+                f"Redfin TSV missing required columns: {sorted(missing)}; "
+                f"got {reader.fieldnames!r}"
             )
 
-        # Pick the row whose period_end is the latest date <= target_sunday;
-        # fall back to the latest overall if Redfin hasn't published yet.
-        def _key(row: dict[str, str]) -> date:
-            return _parse_iso_date(row["period_end"])
+        # Best-row-per-slug. We keep the row whose PERIOD_BEGIN equals the
+        # requested month's first day; otherwise the most recent on or before.
+        # Most-recent fallback is chosen by max(PERIOD_BEGIN) at the end.
+        candidates: dict[str, dict[str, str]] = {}
+        fallback_candidates: dict[str, list[dict[str, str]]] = {
+            cfg["slug"]: [] for cfg in target_cities
+        }
 
-        on_or_before = [r for r in candidates if _key(r) <= target_sunday]
-        if on_or_before:
-            return max(on_or_before, key=_key)
-        log.warning(
-            "Redfin has no row at or before %s for %s; using latest available.",
-            target_sunday,
-            redfin_region_name,
-        )
-        return max(candidates, key=_key)
+        for row in reader:
+            if _strip_quotes(row.get("REGION_TYPE", "")) != _TARGET_REGION_TYPE:
+                continue
+            region = _strip_quotes(row.get("REGION", ""))
+            cfg = target_regions.get(region)
+            if cfg is None:
+                continue
+            if _strip_quotes(row.get("PROPERTY_TYPE", "")) != _TARGET_PROPERTY_TYPE:
+                continue
+            period_begin = _strip_quotes(row.get("PERIOD_BEGIN", ""))
+            if period_begin == target_first_day:
+                candidates[cfg["slug"]] = row
+            else:
+                fallback_candidates[cfg["slug"]].append(row)
+
+        # For any city without an exact-month match, pick the latest available.
+        for slug, rows in fallback_candidates.items():
+            if slug in candidates or not rows:
+                continue
+            best = max(rows, key=lambda r: _parse_iso_date(r["PERIOD_BEGIN"]))
+            log.warning(
+                "Redfin has no row for %s in %s; using latest available (%s).",
+                slug,
+                period,
+                _strip_quotes(best["PERIOD_BEGIN"]),
+            )
+            candidates[slug] = best
+
+        # Materialize → RawSnapshot per city.
+        now = datetime.now(tz=UTC)
+        out: dict[str, RawSnapshot] = {}
+        for slug, row in candidates.items():
+            cfg = next(c for c in target_cities if c["slug"] == slug)
+            bronze_path = self._write_bronze(row, period, slug)
+            out[slug] = RawSnapshot(
+                area_slug=slug,
+                period=period,
+                metrics=self._row_to_metrics(row),
+                source=self.name,
+                fetched_at=now,
+                source_published_at=datetime.combine(
+                    _parse_iso_date(row["PERIOD_END"]),
+                    datetime.min.time(),
+                    tzinfo=UTC,
+                ),
+                bronze_path=str(bronze_path.relative_to(self.data_root.parent)),
+            )
+        return out
+
+    def _write_bronze(
+        self,
+        row: Mapping[str, str],
+        period: Month,
+        slug: str,
+    ) -> Path:
+        """Write the filtered single row as TSV to Bronze.
+
+        Bronze immutability: write-if-not-exists. The same (period, city)
+        should never be re-fetched into a different file; if it already
+        exists, trust it. We cache only the filtered slice (single row, not
+        the 1 GB upstream file) — the storage cost of the raw isn't worth it
+        when the filter logic is deterministic and re-derivable.
+        """
+        path = _bronze_path(self.data_root, period, slug)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        if not path.exists():
+            buf = io.StringIO()
+            writer = csv.DictWriter(buf, fieldnames=list(row.keys()), delimiter="\t")
+            writer.writeheader()
+            writer.writerow(dict(row))
+            path.write_text(buf.getvalue(), encoding="utf-8")
+        return path
 
     def _row_to_metrics(self, row: Mapping[str, str]) -> dict[Capability, MetricValue]:
-        sample_size = _parse_int(row.get("homes_sold"))
+        sample_size = _parse_int(row.get("HOMES_SOLD"))
         out: dict[Capability, MetricValue] = {}
         for column, (capability, unit) in _COLUMN_TO_METRIC.items():
             raw = row.get(column)
@@ -357,6 +413,35 @@ class RedfinCsvAdapter:
                 value = _parse_decimal(raw)
             out[capability] = MetricValue(value=value, sample_size=sample_size, unit=unit)  # type: ignore[arg-type]
         return out
+
+
+def _bytes_to_text_lines(byte_chunks: Iterator[bytes]) -> Iterator[str]:
+    """Buffer byte chunks → yield decoded UTF-8 lines (split on `\\n`).
+
+    The csv.DictReader expects an iterable of strings; we adapt the gunzip
+    chunk stream by buffering across boundaries so multi-byte UTF-8 sequences
+    and partial lines aren't split mid-character or mid-line.
+    """
+    buf = bytearray()
+    for chunk in byte_chunks:
+        buf.extend(chunk)
+        # Pop complete lines.
+        while True:
+            nl = buf.find(b"\n")
+            if nl == -1:
+                break
+            line_bytes = bytes(buf[: nl + 1])
+            del buf[: nl + 1]
+            try:
+                yield line_bytes.decode("utf-8")
+            except UnicodeDecodeError as e:
+                raise ParseError(f"UTF-8 decode failed in row: {e}") from e
+    # Flush trailing line (no newline at EOF).
+    if buf:
+        try:
+            yield bytes(buf).decode("utf-8")
+        except UnicodeDecodeError as e:
+            raise ParseError(f"UTF-8 decode failed at EOF: {e}") from e
 
 
 # ── Module-level convenience for the CLI ────────────────────────────────────

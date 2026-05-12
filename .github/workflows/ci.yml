@@ -92,7 +92,7 @@ jobs:
           import sys
           from pathlib import Path
           from pydantic import TypeAdapter, ValidationError
-          from packages.domain.snapshot import SnapshotFile
+          from domain.snapshot import SnapshotFile
 
           adapter = TypeAdapter(SnapshotFile)
           data_dir = Path("data")

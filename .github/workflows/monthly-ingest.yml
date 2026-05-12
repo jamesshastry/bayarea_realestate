@@ -1,10 +1,13 @@
-name: Weekly Redfin ingest
+name: Monthly Redfin ingest
 
-# Thursday 18:00 UTC = 1pm ET (after Redfin's weekly publish), per
-# `docs/implementation-plan.md` Phase 0 + `docs/design.md` §4.2.
+# Day 8 of every month, 18:00 UTC. Redfin's `city_market_tracker.tsv000.gz`
+# refreshes around the first week of each month (the previous month's data).
+# Day 8 gives a buffer so the file has been republished. Per
+# `docs/implementation-plan.md` Phase 0 (updated 2026-05-12 after Redfin
+# retired the public weekly file).
 on:
   schedule:
-    - cron: "0 18 * * 4"
+    - cron: "0 18 8 * *"
   workflow_dispatch: {}
 
 permissions:
@@ -14,11 +17,11 @@ jobs:
   ingest:
     name: Run Redfin adapter, write snapshot + status, commit
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # Streaming the 991 MB compressed tracker takes a few minutes on Actions.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
         with:
-          # Use the default GITHUB_TOKEN; permissions: contents:write above.
           persist-credentials: true
 
       - name: Install uv
@@ -32,7 +35,7 @@ jobs:
       - name: uv sync (all workspace packages)
         run: uv sync --all-packages
 
-      - name: Run weekly ingest (writes data/YYYY-MM-DD.json + data/sources.json)
+      - name: Run monthly ingest (writes data/YYYY-MM-DD.json + data/sources.json)
         run: make ingest
 
       - name: Regenerate static status page
@@ -44,7 +47,7 @@ jobs:
           import json
           from pathlib import Path
           from pydantic import TypeAdapter
-          from packages.domain.snapshot import SnapshotFile
+          from domain.snapshot import SnapshotFile
           adapter = TypeAdapter(SnapshotFile)
           newest = max(
               Path("data").glob("[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9].json"),
@@ -66,5 +69,5 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git commit -m "chore(ingest): weekly Redfin snapshot $(date -u +%Y-%m-%d)"
+          git commit -m "chore(ingest): monthly Redfin snapshot $(date -u +%Y-%m-%d)"
           git push origin HEAD:${GITHUB_REF#refs/heads/}

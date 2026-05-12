@@ -3,11 +3,11 @@
   "sources": {
     "redfin_csv": {
       "failed_areas": {},
-      "freshness_tier": "weekly",
-      "last_run_at": "2026-05-11T12:00:00+00:00",
+      "freshness_tier": "monthly",
+      "last_run_at": "2026-05-12T08:30:12.051076+00:00",
       "license": "attribution",
       "name": "redfin_csv",
-      "snapshot_file": null,
+      "snapshot_file": "data/2026-05-12.json",
       "status": "ok",
       "successful_areas": [
         "campbell",

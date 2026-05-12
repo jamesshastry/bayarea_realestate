@@ -22,9 +22,16 @@ format:
 	uv run ruff check --fix .
 
 # ── Phase 0 commands ───────────────────────────────────────────────────
-# Run the Redfin CSV adapter once and write data/YYYY-MM-DD.json
+# Run the Redfin CSV adapter once and write data/YYYY-MM-DD.json.
+# `--month current` resolves to the previous calendar month — Redfin's
+# city tracker publishes month M's data in the first half of month M+1.
+# Pass explicit paths so the install-vs-repo path resolution doesn't drop
+# outputs into .venv/lib/python3.12/data/ (cli.py's REPO_ROOT default uses
+# `parents[2]` which is wrong when the package is installed into the venv).
 ingest:
-	uv run python -m adapters.cli redfin --week current
+	uv run python -m adapters.cli redfin --month current \
+		--data-root data \
+		--sources-path data/sources.json
 
 # Regenerate the static status page from data/sources.json. Pass explicit
 # paths so the install-vs-repo path layout doesn't confuse the resolver.

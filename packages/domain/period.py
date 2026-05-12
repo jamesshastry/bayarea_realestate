@@ -40,7 +40,9 @@ class Week(BaseModel):
     @model_validator(mode="after")
     def _validate_week_for_year(self) -> Self:
         # ISO weeks: a year has 52 or 53 weeks. Reject e.g. 2026-W53 if 2026 only has 52.
-        max_week = date(self.year, 12, 28).isocalendar().week  # Dec 28 is always in last ISO week
+        max_week = (
+            date(self.year, 12, 28).isocalendar().week
+        )  # Dec 28 is always in last ISO week
         if self.week > max_week:
             raise ValueError(
                 f"ISO week {self.week} does not exist in year {self.year} (max {max_week})"
@@ -100,8 +102,27 @@ class Month(BaseModel):
     def from_date(cls, d: date) -> Month:
         return cls(year=d.year, month=d.month)
 
+    @classmethod
+    def current(cls, today: date | None = None) -> Month:
+        return cls.from_date(today or date.today())
+
     def __str__(self) -> str:
         return f"{self.year}-{self.month:02d}"
+
+    def first_day(self) -> date:
+        return date(self.year, self.month, 1)
+
+    def last_day(self) -> date:
+        # First day of next month, minus one day.
+        next_year, next_month = (
+            (self.year + 1, 1) if self.month == 12 else (self.year, self.month + 1)
+        )
+        return date(next_year, next_month, 1) - timedelta(days=1)
+
+    def previous(self) -> Month:
+        if self.month == 1:
+            return Month(year=self.year - 1, month=12)
+        return Month(year=self.year, month=self.month - 1)
 
 
 # Period union — what `DataSourceAdapter.fetch(area, period)` accepts.

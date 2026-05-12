@@ -1,0 +1,11 @@
+"PERIOD_BEGIN"	"PERIOD_END"	"REGION_TYPE"	"REGION"	"PROPERTY_TYPE"	"MEDIAN_SALE_PRICE"	"MEDIAN_PPSF"	"MEDIAN_DOM"	"AVG_SALE_TO_LIST"	"HOMES_SOLD"	"INVENTORY"	"NEW_LISTINGS"	"MONTHS_OF_SUPPLY"	"PRICE_DROPS"
+"2026-03-01"	"2026-03-31"	"place"	"Dublin, CA"	"All Residential"	1625000	780	22	1.01	38	51	44	2.1	0.182
+"2026-03-01"	"2026-03-31"	"place"	"Pleasanton, CA"	"All Residential"	1875000	850	15	1.04	61	72	83	1.7	0.111
+"2026-03-01"	"2026-03-31"	"place"	"Fremont, CA"	"All Residential"	1500000	950	18	1.02	142	89	102	1.9	0.145
+"2026-03-01"	"2026-03-31"	"place"	"Milpitas, CA"	"All Residential"	1395000	820	20	1.03	49	44	58	1.5	0.16
+"2026-03-01"	"2026-03-31"	"place"	"Sunnyvale, CA"	"All Residential"	2100000	1050	14	1.05	78	62	84	1.6	0.092
+"2026-03-01"	"2026-03-31"	"place"	"Mountain View, CA"	"All Residential"	2250000	1150	13	1.06	53	48	62	1.8	0.075
+"2026-03-01"	"2026-03-31"	"place"	"Campbell, CA"	"All Residential"	1750000	900	17	1.03	34	29	37	1.9	0.118
+"2026-02-01"	"2026-02-28"	"place"	"Fremont, CA"	"All Residential"	1480000	945	21	1.01	131	95	98	2.0	0.155
+"2026-03-01"	"2026-03-31"	"place"	"Fremont, CA"	"Single Family Residential"	1620000	980	16	1.04	95	62	72	1.7	0.12
+"2026-03-01"	"2026-03-31"	"county"	"Alameda County, CA"	"All Residential"	1350000	820	19	1.02	520	410	480	1.8	0.14

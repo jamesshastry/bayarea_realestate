@@ -1,8 +1,15 @@
-# Runbook: Redfin Data Center weekly CSV source
+# Runbook: Redfin Data Center monthly CSV source
 
 > Status: Phase 0 · Owner: Data ingestion track
 > Adapter: `packages/adapters/redfin_csv.py`
-> Workflow: `.github/workflows/weekly-ingest.yml`
+> Workflow: `.github/workflows/monthly-ingest.yml`
+>
+> **2026-05-12 — Source change.** Redfin retired the public weekly file
+> (`weekly_housing_market_data_most_recent.tsv000.gz` returns HTTP 403 from
+> S3). We now consume the monthly per-city tracker (`city_market_tracker.tsv000.gz`,
+> ~991 MB compressed, streamed inline). Cadence shifted weekly → monthly;
+> `as_of_period` in the snapshot file now carries `YYYY-MM` rather than
+> `YYYY-Www`. `SCHEMA_VERSION` bumped 1 → 2.
 
 ## License
 
@@ -22,62 +29,73 @@ string in its `attribution` column.
 ## URL pattern
 
 ```
-https://redfin-public-data.s3-us-west-2.amazonaws.com/redfin_market_tracker/weekly_housing_market_data_most_recent.tsv000.gz
+https://redfin-public-data.s3-us-west-2.amazonaws.com/redfin_market_tracker/city_market_tracker.tsv000.gz
 ```
 
-That URL is "the most recent weekly snapshot" — the file is overwritten every
-Thursday around 1pm ET (5pm UTC). Our cron runs Thu 18:00 UTC to give Redfin
-a one-hour publishing buffer.
+That URL is "the all-time per-city monthly aggregate" — the file is
+overwritten ~once a month with the latest published data. The compressed
+file is **~991 MB** (5–8 GB decompressed); the adapter streams it via
+`requests.get(stream=True)` + `gzip.GzipFile`, never holding the whole
+thing in memory. The streaming filter pass takes ~30 s on a US-West runner.
 
-Historical files exist at parallel paths (`weekly_housing_market_data.tsv000.gz`
-without `_most_recent`); Phase 0 doesn't need them.
+Our cron runs day 8 of every month at 18:00 UTC (`0 18 8 * *`) — Redfin
+typically refreshes within the first week, day 8 gives a buffer.
 
 ## File format
 
 - TSV (tab-separated), gzip-compressed in transport.
-- One row per (region × property_type × period_end). Each row covers a 4-week
-  rolling window — `period_begin` and `period_end` define the window.
+- One row per (region × property_type × period_begin). `PERIOD_DURATION` = 30
+  days for the city tracker; `PERIOD_BEGIN`/`PERIOD_END` mark the calendar
+  month.
+- Header is fully **double-quoted, ALL_CAPS** — `csv.DictReader` strips the
+  quotes; the adapter additionally `_strip_quotes()` as belt-and-suspenders.
 - For Bay Area city-level work we filter:
-  - `region_type == 'place'`
-  - `region == "<City>, CA"` (e.g. `"Fremont, CA"`)
-  - `property_type in {"All Residential", "All Homes", ""}` (the top-level
-    summary; SFH/condo splits live under `"Single Family Residential"` and
-    `"Condo/Co-op"` respectively, which we'll start consuming when we add
-    `BY_PROPERTY_TYPE` capability in Phase 2)
-- Numeric columns can carry blanks, `-`, `N/A`, dollar signs, and percent
+  - `REGION_TYPE == 'place'`
+  - `REGION == "<City>, CA"` (e.g. `"Fremont, CA"`)
+  - `PROPERTY_TYPE == 'All Residential'` (the top-level summary; SFH/condo
+    splits live under `"Single Family Residential"` (id=6) and `"Condo/Co-op"`
+    (id=3), to be consumed when we add `BY_PROPERTY_TYPE` capability in Phase 2)
+- Numeric columns can carry blanks, `-`, `NA`, `N/A`, dollar signs, and percent
   signs — the adapter normalizes all of these via `_parse_decimal`.
 
 Columns we currently consume (others ignored, schema is forward-compatible):
 
 | Redfin column | Capability | Unit |
 |---|---|---|
-| `median_sale_price` | `MEDIAN_PRICE` | USD |
-| `median_ppsf` | `PPSF` | USD/sqft |
-| `median_days_on_market` | `DOM` | days |
-| `average_sale_to_list_ratio` | `SALE_TO_LIST` | ratio |
-| `homes_sold` | `HOMES_SOLD` (also = sample_size) | count |
-| `active_listings` | `INVENTORY` | count |
-| `new_listings` | `NEW_LISTINGS` | count |
-| `months_of_supply` | `MONTHS_OF_SUPPLY` | months |
-| `percent_homes_sold_with_price_drops` | `PCT_PRICE_DROPS` | pct |
+| `MEDIAN_SALE_PRICE` | `MEDIAN_PRICE` | USD |
+| `MEDIAN_PPSF` | `PPSF` | USD/sqft |
+| `MEDIAN_DOM` | `DOM` | days |
+| `AVG_SALE_TO_LIST` | `SALE_TO_LIST` | ratio |
+| `HOMES_SOLD` | `HOMES_SOLD` (also = sample_size) | count |
+| `INVENTORY` | `INVENTORY` | count |
+| `NEW_LISTINGS` | `NEW_LISTINGS` | count |
+| `MONTHS_OF_SUPPLY` | `MONTHS_OF_SUPPLY` | months |
+| `PRICE_DROPS` | `PCT_PRICE_DROPS` | pct |
 
 ## Bronze immutability
 
-The adapter caches the raw decoded TSV at:
+The adapter caches the **filtered** single row (header + 1 data row, ~1 KB)
+per city at:
 
 ```
-data/bronze/redfin/{iso_week}/{slug}.tsv
+data/bronze/redfin/{YYYY-MM}/{slug}.tsv
 ```
 
 Per Phase 0 deliverables, this file is **never** mutated. Re-running the
-adapter for the same `(week, slug)` is a no-op for Bronze and writes the
-parsed `RawSnapshot` from the cached file. If we need to re-fetch (Redfin
-fixed a bad row), delete the Bronze file by hand and re-run.
+adapter for the same `(month, slug)` is a no-op for Bronze. If we need to
+re-derive (e.g. Redfin republished with a corrected value), delete the
+Bronze file and re-run.
 
-Storage discipline: keep Bronze in git for now (Phase 0 has tiny volumes —
-< 1 MB / week / city × 7 cities). When `data/bronze/` exceeds ~50 MB total,
-move it to R2 (per `docs/design.md` §9.1) and replace the local cache with a
-prefixed S3 URL.
+**Why filtered, not raw:** the upstream file is ~991 MB compressed.
+Caching it whole would balloon git history; caching the filtered slice is
+~1 KB per (month × city) and keeps the audit trail useful. The filter
+logic is pure and re-derivable, so caching the *result* of the filter is
+sufficient for reproducibility.
+
+Storage discipline: keep Bronze in git for now (Phase 0 has tiny volumes
+— ~1 KB / month / city × 7 cities). When the cache outgrows reasonable
+git limits, move it to R2 (per `docs/design.md` §9.1) and replace the
+local cache with a prefixed S3 URL.
 
 ## Per-city seed mapping
 
@@ -89,13 +107,13 @@ Redfin label changes (rename, missing diacritic, etc.), update only the
 
 | Slug | Redfin region | Verified |
 |---|---|---|
-| dublin | `Dublin, CA` | TODO — first cron run |
-| pleasanton | `Pleasanton, CA` | TODO |
-| fremont | `Fremont, CA` | TODO |
-| milpitas | `Milpitas, CA` | TODO |
-| sunnyvale | `Sunnyvale, CA` | TODO |
-| mountain-view | `Mountain View, CA` | TODO |
-| campbell | `Campbell, CA` | TODO |
+| dublin | `Dublin, CA` | ✓ 2026-05-12 (first ingest, March 2026 data) |
+| pleasanton | `Pleasanton, CA` | ✓ 2026-05-12 |
+| fremont | `Fremont, CA` | ✓ 2026-05-12 |
+| milpitas | `Milpitas, CA` | ✓ 2026-05-12 |
+| sunnyvale | `Sunnyvale, CA` | ✓ 2026-05-12 |
+| mountain-view | `Mountain View, CA` | ✓ 2026-05-12 |
+| campbell | `Campbell, CA` | ✓ 2026-05-12 |
 
 After the first successful weekly run, flip the TODOs to a checkmark + the
 ISO week we confirmed in. If a city fails to match, the adapter raises

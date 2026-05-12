@@ -32,7 +32,7 @@ def _valid_payload() -> dict[str, object]:
     """A minimal-but-realistic payload — what the Redfin adapter writes."""
     return {
         "schema_version": SCHEMA_VERSION,
-        "as_of_week": "2026-W19",
+        "as_of_period": "2026-W19",
         "scraped_at": "2026-05-08T18:00:00Z",
         "cities": [
             {
@@ -69,7 +69,7 @@ def test_snapshot_file_validates_minimum_payload() -> None:
     payload = _valid_payload()
     snap = TypeAdapter(SnapshotFile).validate_python(payload)
     assert snap.schema_version == SCHEMA_VERSION
-    assert snap.as_of_week == "2026-W19"
+    assert snap.as_of_period == "2026-W19"
     assert len(snap.cities) == 1
     assert snap.cities[0].slug == "fremont"
     assert snap.cities[0].sfh is not None
@@ -106,11 +106,22 @@ def test_snapshot_file_rejects_empty_cities_list() -> None:
         SnapshotFile.model_validate(payload)
 
 
-def test_snapshot_file_rejects_bad_iso_week() -> None:
+def test_snapshot_file_rejects_malformed_period() -> None:
+    """`as_of_period` must be ISO week (YYYY-Www) or ISO month (YYYY-MM)."""
     payload = _valid_payload()
-    payload["as_of_week"] = "2026-19"  # missing W
+    # Neither week (no `W`, 3-digit suffix) nor month (3-digit suffix).
+    payload["as_of_period"] = "2026-019"
     with pytest.raises(ValidationError):
         SnapshotFile.model_validate(payload)
+
+
+def test_snapshot_file_accepts_iso_month_period() -> None:
+    """v2 schema: `as_of_period` accepts ISO months (YYYY-MM) for the
+    monthly-cadence Redfin source as well as ISO weeks."""
+    payload = _valid_payload()
+    payload["as_of_period"] = "2026-04"
+    snap = SnapshotFile.model_validate(payload)
+    assert snap.as_of_period == "2026-04"
 
 
 # ── CitySnapshot validation ─────────────────────────────────────────────────
@@ -342,7 +353,7 @@ def test_geographic_area_immutable() -> None:
 
 def test_programmatic_snapshot_validates() -> None:
     snap = SnapshotFile(
-        as_of_week="2026-W19",
+        as_of_period="2026-W19",
         scraped_at=datetime(2026, 5, 8, 18, 0, 0, tzinfo=UTC),
         cities=[
             CitySnapshot(

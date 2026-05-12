@@ -1,19 +1,24 @@
-"""CLI entry point: `python -m packages.adapters.cli redfin --week current`.
+"""CLI entry point: `python -m adapters.cli redfin --month current`.
 
-Phase 0 sequencing (per `docs/implementation-plan.md`):
-  1. Resolve the target ISO week (`current` or explicit `YYYY-Www`).
-  2. For each of the 7 seed cities, fetch one `RawSnapshot` from the Redfin
-     adapter; cache to Bronze.
-  3. Aggregate the 7 snapshots into a `SnapshotFile` and write
-     `data/YYYY-MM-DD.json` (date == today UTC).
+Phase 0 sequencing (per `docs/implementation-plan.md`, updated 2026-05-12 to
+reflect Redfin's retirement of the public weekly file):
+
+  1. Resolve the target month (`current`, `previous`, or explicit `YYYY-MM`).
+  2. Stream Redfin's `city_market_tracker.tsv000.gz` ONCE, filtering inline
+     to the 7 seed cities × `PROPERTY_TYPE='All Residential'`.
+  3. Aggregate into a `SnapshotFile` and write `data/YYYY-MM-DD.json`
+     (filename date == today UTC).
   4. Update `data/sources.json` (read by the status-page generator) with the
      adapter's last-fetch metadata.
 
-The CLI deliberately handles per-city failures in isolation per NF-REL-02 —
-one bad city does not abort the whole run. Cities that fail land in the
-sources.json log with status='error' and are simply omitted from
-the snapshot file. CI fails the run (non-zero exit) only if zero cities
-succeeded.
+The adapter handles per-city failures in isolation per NF-REL-02 — one bad
+city does not abort the whole run. Cities that fail land in sources.json
+with status='error' and are omitted from the snapshot file. CI fails the
+run (non-zero exit) only if zero cities succeeded.
+
+Re cadence: "current" resolves to the **previous** calendar month — Redfin
+publishes a given month's data in the first half of the following month, so
+asking for "this month" early in the month would fail with no data.
 """
 
 from __future__ import annotations
@@ -27,8 +32,7 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
-from domain.geographic_area import GeographicArea
-from domain.period import Week
+from domain.period import Month
 from domain.snapshot import (
     SCHEMA_VERSION,
     CitySnapshot,
@@ -38,12 +42,12 @@ from domain.snapshot import (
     SnapshotFile,
 )
 
-from ._base import AdapterError, Capability, MetricValue, RawSnapshot
+from ._base import Capability, MetricValue, RawSnapshot
 from .redfin_csv import (
+    SEED_CITIES,
     RedfinCsvAdapter,
     city_county,
     city_display_name,
-    iter_seed_areas,
 )
 
 log = logging.getLogger(__name__)
@@ -57,7 +61,9 @@ DEFAULT_SOURCES_PATH = DEFAULT_DATA_ROOT / "sources.json"
 # ── Snapshot assembly ───────────────────────────────────────────────────────
 
 
-def _metric_decimal(metrics: dict[Capability, MetricValue], cap: Capability) -> Decimal | None:
+def _metric_decimal(
+    metrics: dict[Capability, MetricValue], cap: Capability
+) -> Decimal | None:
     mv = metrics.get(cap)
     if mv is None or mv.value is None:
         return None
@@ -91,7 +97,7 @@ def _confidence_for(snapshot: RawSnapshot) -> int:
     Real `packages/finance/confidence.py` arrives in Phase 1 (per implementation
     plan) and will replace this. We compute a stub here so every record has a
     value (NF-DAT-01 requires it). Logic:
-      - start at 90 (Redfin is a high-quality weekly source)
+      - start at 90 (Redfin is a high-quality source)
       - subtract 10 if homes_sold sample is < 30 (the design.md §5.2 high-conf
         threshold for median_sale_price)
       - subtract 10 if median_price is missing entirely
@@ -106,9 +112,9 @@ def _confidence_for(snapshot: RawSnapshot) -> int:
 
 
 def _to_city_snapshot(snapshot: RawSnapshot) -> CitySnapshot:
-    week = snapshot.period
-    assert isinstance(week, Week)
-    sources = [f"{snapshot.source}:{week.year}-w{week.week:02d}"]
+    period = snapshot.period
+    assert isinstance(period, Month)
+    sources = [f"{snapshot.source}:{period}"]
     return CitySnapshot(
         slug=snapshot.area_slug,
         name=city_display_name(snapshot.area_slug),
@@ -120,7 +126,7 @@ def _to_city_snapshot(snapshot: RawSnapshot) -> CitySnapshot:
             sources=sources,
             as_of=snapshot.source_published_at.date(),
             confidence=_confidence_for(snapshot),
-            freshness_tier=FreshnessTier.WEEKLY,
+            freshness_tier=FreshnessTier.MONTHLY,
         ),
     )
 
@@ -160,25 +166,31 @@ def _update_sources_json(
             if snapshot_file is not None
             else None
         ),
-        "freshness_tier": "weekly",
+        "freshness_tier": "monthly",
         "license": "attribution",
     }
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    path.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
 
 
 # ── Run orchestration ───────────────────────────────────────────────────────
 
 
-def _resolve_week(arg: str, today: date | None = None) -> Week:
+def _resolve_month(arg: str, today: date | None = None) -> Month:
     today = today or datetime.now(tz=UTC).date()
     if arg == "current":
-        return Week.from_date(today)
-    return Week.parse(arg)
+        # Redfin publishes month M's data in the first half of M+1, so "current"
+        # for our purposes is the *previous* calendar month.
+        return Month.from_date(today).previous()
+    if arg == "previous":
+        return Month.from_date(today).previous()
+    return Month.parse(arg)
 
 
 def run_redfin(
-    week_arg: str,
+    month_arg: str,
     *,
     data_root: Path = DEFAULT_DATA_ROOT,
     sources_path: Path = DEFAULT_SOURCES_PATH,
@@ -186,31 +198,38 @@ def run_redfin(
     adapter: RedfinCsvAdapter | None = None,
     today: date | None = None,
 ) -> Path:
-    """Fetch all 7 seed cities for the resolved week, write the snapshot file
-    and update sources.json. Returns the snapshot file path on success.
+    """Stream the Redfin city tracker once, fetch all 7 seed cities, write
+    the snapshot file and update sources.json. Returns the snapshot file
+    path on success.
 
     Raises `RuntimeError` if zero cities succeeded (CI gate)."""
     today = today or datetime.now(tz=UTC).date()
-    week = _resolve_week(week_arg, today=today)
-    log.info("Redfin ingest: target week %s, today %s", week, today)
+    month = _resolve_month(month_arg, today=today)
+    log.info("Redfin ingest: target month %s, today %s", month, today)
 
     adapter = adapter or RedfinCsvAdapter(data_root=data_root)
+
+    # ONE streaming pass for all 7 cities — much cheaper than 7 fetches.
     successful: list[CitySnapshot] = []
     failed: dict[str, str] = {}
+    try:
+        raw_by_slug = adapter.fetch_all_seed_cities(month)
+    except Exception as e:  # network / parse failure on the whole run
+        log.error("Streaming Redfin fetch failed entirely: %s", e)
+        failed = {cfg["slug"]: f"{type(e).__name__}: {e}" for cfg in SEED_CITIES}
+        raw_by_slug = {}
 
-    areas: list[GeographicArea] = list(iter_seed_areas())
-    for area in areas:
-        try:
-            raw = adapter.fetch(area, week)
-        except AdapterError as e:
-            log.warning("Adapter failure for %s: %s", area.slug, e)
-            failed[area.slug] = f"{type(e).__name__}: {e}"
+    for cfg in SEED_CITIES:
+        slug = cfg["slug"]
+        if slug not in raw_by_slug:
+            if slug not in failed:
+                failed[slug] = "ParseError: no row matched in streaming pass"
             continue
         try:
-            successful.append(_to_city_snapshot(raw))
+            successful.append(_to_city_snapshot(raw_by_slug[slug]))
         except Exception as e:
-            log.warning("Snapshot assembly failure for %s: %s", area.slug, e)
-            failed[area.slug] = f"{type(e).__name__}: {e}"
+            log.warning("Snapshot assembly failure for %s: %s", slug, e)
+            failed[slug] = f"{type(e).__name__}: {e}"
 
     if not successful:
         # Still update sources.json so the status page reflects the failure.
@@ -222,11 +241,13 @@ def run_redfin(
             failed=failed,
             snapshot_file=None,
         )
-        raise RuntimeError(f"Redfin ingest produced 0 successful cities; failures: {failed!r}")
+        raise RuntimeError(
+            f"Redfin ingest produced 0 successful cities; failures: {failed!r}"
+        )
 
     snap = SnapshotFile(
         schema_version=SCHEMA_VERSION,
-        as_of_week=str(week),
+        as_of_period=str(month),
         scraped_at=datetime.now(tz=UTC),
         cities=successful,
     )
@@ -257,16 +278,22 @@ def run_redfin(
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="packages.adapters.cli",
+        prog="adapters.cli",
         description="Run a Phase 0 adapter and write a snapshot file.",
     )
     sub = parser.add_subparsers(dest="adapter", required=True)
 
-    redfin = sub.add_parser("redfin", help="Run the Redfin Data Center weekly CSV adapter.")
+    redfin = sub.add_parser(
+        "redfin", help="Run the Redfin Data Center monthly CSV adapter."
+    )
     redfin.add_argument(
-        "--week",
+        "--month",
         default="current",
-        help="ISO week (YYYY-Www) or the literal 'current' (default).",
+        help=(
+            "Calendar month: ISO `YYYY-MM`, the literal `current` "
+            "(= previous calendar month — Redfin lags ~1 month), or `previous`. "
+            "Default: current."
+        ),
     )
     redfin.add_argument(
         "--data-root",
@@ -297,7 +324,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.adapter == "redfin":
         try:
             run_redfin(
-                args.week,
+                args.month,
                 data_root=args.data_root,
                 sources_path=args.sources_path,
                 output_path=args.output,

@@ -24,8 +24,12 @@ from typing import Annotated
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
-# Bump on any breaking change to the JSON shape below. Phase 0 ships at 1.
-SCHEMA_VERSION: int = 1
+# Bump on any breaking change to the JSON shape below.
+# v1: as_of_week (ISO YYYY-Www) — original Redfin weekly source.
+# v2: as_of_period (ISO YYYY-Www OR YYYY-MM) — Redfin retired the public
+#     weekly file in 2026; we shifted to the monthly city tracker, which
+#     emits month-keyed periods instead of ISO weeks.
+SCHEMA_VERSION: int = 2
 
 
 # ── Enums ───────────────────────────────────────────────────────────────────
@@ -132,7 +136,10 @@ class SnapshotFile(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     schema_version: int = SCHEMA_VERSION
-    as_of_week: Annotated[str, Field(pattern=r"^\d{4}-W\d{2}$")]
+    # Either ISO week (`2026-W19`) or ISO month (`2026-04`) — the adapter
+    # producing the file picks one based on its source's native cadence.
+    # Redfin's monthly city tracker → month; future weekly sources → week.
+    as_of_period: Annotated[str, Field(pattern=r"^(\d{4}-W\d{2}|\d{4}-\d{2})$")]
     scraped_at: datetime
     cities: Annotated[list[CitySnapshot], Field(min_length=1)]
 
