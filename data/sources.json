@@ -4,7 +4,7 @@
     "redfin_csv": {
       "failed_areas": {},
       "freshness_tier": "monthly",
-      "last_run_at": "2026-05-12T08:30:12.051076+00:00",
+      "last_run_at": "2026-05-12T09:17:24.262349+00:00",
       "license": "attribution",
       "name": "redfin_csv",
       "snapshot_file": "data/2026-05-12.json",
