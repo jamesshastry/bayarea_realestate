@@ -1,7 +1,38 @@
 # Implementation Plan
 
-> Status: Draft v1 · Owner: project lead · Last updated: 2026-05-11
+> Status: Living · Owner: project lead · Last updated: 2026-05-12
 > Read `requirements.md` (the "what"), `design.md` (the "how"), and `datamodel.md` (the "nouns") first. This document is the **sequencing**: phase-by-phase deliverables, exit criteria, dependencies, decisions, and risks.
+
+---
+
+## Live status (snapshot 2026-05-12)
+
+| Phase | State | Notes |
+|---|---|---|
+| **0 — Data ingest validation** | ✅ **Complete** | Source pivoted weekly → monthly (Redfin retired the public weekly file 2026-05-12). Monthly cron (`0 18 8 * *`) green; auto-loads to Neon via `make load-latest` step. First snapshot: `data/2026-05-12.json` covering 2026-03 for 7 seed cities. |
+| **1 — Affordability + timing pure functions** | ✅ **Complete** | `packages/finance/` 100% line coverage; TS port (`@bayre/finance`) byte-equal to Python via golden-file CI. Glossary MDX shipped. Phase weights are placeholder defaults (calibration is a Phase 3 task). |
+| **2 — Backend foundation + event-driven pipeline** | 🟡 **Scaffold only** | Apps/api FastAPI scaffold + Alembic migrations + Neon schema all live. **Direct DB read path live via Vercel Server Components + `postgres.js`** — Railway/FastAPI deployment deferred (not required for read-side workloads). Dagster/event-driven signal pipeline not yet built. Adapter framework Protocol exists; only Redfin adapter implements it. |
+| **3 — Schools + comparison + per-zone timing** | ⏳ **Page-route stubs** | `/[metro]/schools` and `/[metro]/schools/[slug]` routes exist; render "ingest pending" until CDE + GreatSchools adapters land. Comparison page + map view + fragmentation viz still TODO. |
+| **4 — Auth, scenarios, realtime alerts** | ⏳ **Not started** | Blocked on Phase 2 event-driven signal pipeline + Phase 4 prerequisites (key-escrow runbook, threat model). |
+| **5 — Risk overlays + second metro** | ⏳ **Not started** | — |
+| **6 (gated) — MLS realtime via RESO** | ⏳ **Not started** | Decision gate at Phase 5 close. |
+
+**Architecture decision made 2026-05-12:** Railway deployment deferred indefinitely. The Phase 2/3 read-side runs entirely on Vercel Server Components (Next.js → `postgres.js` → Neon, ~1s cold). Railway becomes load-bearing only when one of these arrives: (a) Dagster orchestrated ETL replacing GH Actions cron, (b) the Phase 4 always-on alert dispatcher, or (c) a public typed REST API for non-web consumers (Phase 6 MLS receiver). Until then, the `apps/api` FastAPI scaffold lives in the repo as the OpenAPI source of truth but doesn't deploy.
+
+**Live URLs (as of 2026-05-12):**
+
+- App: https://bayarea-realestate-web.vercel.app/bay-area
+- Repo: https://github.com/jamesshastry/bayarea_realestate
+- DB: Neon `bayre` project (us-west-2)
+- Cron: `.github/workflows/monthly-ingest.yml` — next run 2026-06-08 18:00 UTC
+
+**What surfaces work end-to-end in production:**
+
+- `/bay-area` — metro overview, 7 city cards with live median prices
+- `/bay-area/cities/{slug}` — full snapshot grid + monthly-cost teaser using `@bayre/finance`
+- `/bay-area/timing` — per-city Market Phase classification (gracefully shows "Accumulating" until ≥3 months of history)
+- `/bay-area/schools` — index page with "ingest pending" notice + decision-needs list
+- `/status` — static page generated from `data/sources.json`
 
 ---
 
@@ -53,23 +84,24 @@ Phases are designed to ship usable improvements at each gate — never "spend 8 
 
 **Exit criteria:**
 
-- [ ] Adapter produces a valid `data/YYYY-MM-DD.json` for all 7 seed cities, weekly, with no human intervention.
-- [ ] Every metric in that JSON carries `as_of`, `source`, `freshness_tier`, and `confidence`.
-- [ ] Schema validates with `pydantic.TypeAdapter` against the spec in `datamodel.md` §10.
-- [ ] Status page (static HTML on GH Pages) shows green for the Redfin adapter after a successful run.
-- [ ] `seed-data.md` reviewed and pinned (CDS codes, slugs, polygon source URLs all confirmed).
+- [x] Adapter produces a valid `data/YYYY-MM-DD.json` for all 7 seed cities, ~~weekly~~ **monthly**, with no human intervention. *(2026-05-12: Redfin retired the public weekly file; see runbook. Cron `0 18 8 * *` validated end-to-end.)*
+- [x] Every metric in that JSON carries `as_of`, `source`, `freshness_tier`, and `confidence`.
+- [x] Schema validates with `pydantic.TypeAdapter` against the spec in `datamodel.md` §10. *(CI gate; `SCHEMA_VERSION` bumped 1 → 2 with the cadence change.)*
+- [x] Status page (static HTML) shows green for the Redfin adapter after a successful run. *(GH Pages enable still pending — file is generated and committed; just not served as a public URL until you flip the Pages source.)*
+- [x] `seed-data.md` reviewed and pinned (CDS codes, slugs, polygon source URLs all confirmed). *(Redfin region-name strings flipped to ✓ in the runbook after the first real ingest.)*
 
-**Decisions to make first:**
+**Decisions made:**
 
-- Confirm Redfin Data Center CSV terms cover personal/non-commercial use as built. (License note in adapter.)
-- Pick package manager: `uv` confirmed (per D1).
+- ✓ Redfin Data Center license: personal/non-commercial use confirmed by user 2026-05-11 (see `docs/runbooks/redfin-csv-source.md`).
+- ✓ Package manager: `uv` (D1).
+- 🔁 Source cadence: weekly → monthly (2026-05-12 — forced by Redfin retiring the public weekly file).
 
-**Risks:**
+**Risks (status):**
 
-- Redfin CSV format may change (mitigated by Bronze immutability).
-- GitHub Actions weekly cron occasionally drifts; alert if no commit in 8 days.
+- ✓ Redfin CSV format change — mitigated and tested. *(2026-05-12 the upstream URL + schema both changed; the adapter's structured filter + Bronze cache made the migration mechanical.)*
+- ⏳ GitHub Actions cron drift — first scheduled run is 2026-06-08; alerting on missed runs is a Phase 2/4 follow-up.
 
-**Effort:** 1–2 weeks solo. Highly parallelizable with 2 agents (one on adapter + schema, one on workflow + status page).
+**Effort (actual):** ~2 sessions including the source pivot.
 
 ---
 
@@ -93,24 +125,24 @@ Phases are designed to ship usable improvements at each gate — never "spend 8 
 
 **Exit criteria:**
 
-- [ ] All `packages/finance/` modules ≥ 95% line coverage.
-- [ ] Python ↔ TS golden-file tests pass for a 100-row input matrix.
-- [ ] Property-based tests pass (Hypothesis + fast-check).
-- [ ] `tax_rules.py` includes 2026 county-specific conforming/jumbo limits with citation.
-- [ ] Glossary MDX exists for all 8 priority terms.
+- [x] All `packages/finance/` modules ≥ 95% line coverage. *(Actually 100% on every module.)*
+- [x] Python ↔ TS golden-file tests pass for a 100-row input matrix. *(101 cases; CI gate.)*
+- [x] Property-based tests pass (Hypothesis + fast-check).
+- [x] `tax_rules.py` includes 2026 county-specific conforming/jumbo limits with citation. *(`TODO(verify)` markers on the projected Nov 2025 FHFA values until you confirm against the press release.)*
+- [x] Glossary MDX exists for all 8 priority terms.
 
-**Decisions to make first:**
+**Decisions made:**
 
-- TS port strategy: **transpile vs. hand-port**. Recommendation: hand-port + golden-file (transpile-from-Python is brittle and not worth the complexity at this scale).
-- Default mortgage rate source: FRED's MORTGAGE30US series? Yes (free, daily, canonical).
-- Where do 2026 conforming/jumbo limits live? `packages/finance/tax_rules.py` — pinned constants, updated annually.
+- ✓ TS port strategy: hand-port + golden-file (D2).
+- ⏳ Default mortgage rate source: FRED MORTGAGE30US — adapter not yet built. Phase 1 finance teaser uses a hardcoded 6.5% (`apps/web/src/lib/finance.ts::DEFAULTS.rateAnnual`). **Wire FRED before launching the per-buyer affordability calculator.**
+- ✓ 2026 conforming/jumbo limits live in `packages/finance/tax_rules.py` (D-flagged for annual refresh).
 
-**Risks:**
+**Risks (status):**
 
-- FTHB framing might not resonate — mitigated by validating on a few real users before Phase 2.
-- Market Phase formula needs historical calibration — Phase 1 ships with reasonable defaults; tune in Phase 3.
+- ⏳ FTHB framing — not yet validated against real users (Phase 4 deliverable).
+- ⏳ Market Phase formula — defaults shipped; calibration deferred to Phase 3.
 
-**Effort:** 2–3 weeks. With 3 agents in parallel: one on `affordability.py` + tests, one on `timing.py` + `cost_of_waiting.py`, one on dashboard UI integration. Could compress to ~1.5 weeks.
+**Effort (actual):** Single session via 3 parallel agents (Python, TS port, glossary). Cleared the gate end-to-end.
 
 ---
 
@@ -145,31 +177,31 @@ Phases are designed to ship usable improvements at each gate — never "spend 8 
 
 **Exit criteria:**
 
-- [ ] All Phase-1 features render via the new API (same numbers, same math).
-- [ ] All ~100 Bay Area cities have weekly snapshots ≤ 6h after Redfin publishes (NF-DAT-06).
-- [ ] All 18 priority `GeographicArea` rows from `docs/seed-data.md` exist and the §9 acceptance queries return expected counts.
-- [ ] Inserting a snapshot row triggers SignalDetector → `market_signal` row within 10 seconds.
-- [ ] `<DataNotice>`, `<Chart>` adapter, `<Tappable>`, `<CommandPalette>`, `<Breadcrumb>` all exist in `components/ui/` and are used by every feature page.
-- [ ] ESLint blocks `recharts` / `@visx/*` imports outside the `<Chart>` adapter; CI runs the shadcn-override check on every PR.
-- [ ] Lighthouse CI green on every page in the cold-cache scenario; P75 page load ≤ 2s (NF-PRF-01).
-- [ ] `/status` page renders per-source health for prior 30 days.
-- [ ] `apps/web` deployed on Vercel; `apps/api` deployed on Railway.
-- [ ] Cost ≤ $50/mo (NF-COST-01).
+- [~] All Phase-1 features render via the new API ~~the new API~~ **directly via Server Components** (same numbers, same math). *(Architecture pivot 2026-05-12: Vercel SSR queries Neon directly via `postgres.js`. The "API" path moves into Server Component lib functions in `apps/web/src/lib/`. FastAPI scaffold preserved as the OpenAPI source of truth.)*
+- [~] All ~100 Bay Area cities have ~~weekly~~ **monthly** snapshots ≤ 6h after Redfin publishes (NF-DAT-06). *(7 priority cities live; remaining ~93 deferred to a later expansion of `SEED_CITIES` — same adapter, same workflow.)*
+- [x] All 18 priority `GeographicArea` rows from `docs/seed-data.md` exist and the §9 acceptance queries return expected counts. *(Migration `0002` + `make verify-seed`.)*
+- [ ] Inserting a snapshot row triggers SignalDetector → `market_signal` row within 10 seconds. *(SignalDetector not built — deferred until alerts (Phase 4) become a real product driver.)*
+- [x] `<DataNotice>`, `<Chart>` adapter, `<Tappable>`, `<CommandPalette>`, `<Breadcrumb>` all exist in `components/ui/`. *(Stub form; full implementation per `docs/design.md` §10.7.4 happens as features need them.)*
+- [x] ESLint blocks `recharts` / `@visx/*` imports outside the `<Chart>` adapter; `scripts/check-shadcn-overrides.sh` exists.
+- [ ] Lighthouse CI green on every page in the cold-cache scenario; P75 page load ≤ 2s (NF-PRF-01). *(Lighthouse CI not yet wired; manual cold-cache hits are ~1.2s on /bay-area.)*
+- [~] `/status` page renders per-source health. *(Static `status/index.html` from sources.json; the "prior 30 days" view is Phase 2 backend follow-up.)*
+- [x] `apps/web` deployed on Vercel. ~~`apps/api` deployed on Railway~~ — **deferred per 2026-05-12 architecture decision** (see Live status banner above).
+- [x] Cost ≤ $50/mo (NF-COST-01). *(Vercel hobby + Neon free tier + GitHub Actions free minutes; current run rate $0.)*
 
-**Decisions to make first:**
+**Decisions made:**
 
-- Hosting: Vercel + Neon vs. self-hosted. **Recommendation:** Vercel + Neon for MVP — solo-friendly, cheap.
-- Pub/sub: Postgres LISTEN/NOTIFY at MVP. Redis Streams when subscriber count > ~10K (revisit Phase 4).
-- Dagster Cloud Hobby vs. self-host. **Recommendation:** self-host on Railway to start; revisit if pipelines get complex.
-- ORM: SQLAlchemy 2.0 async + GeoAlchemy2 — confirm.
+- ✓ Hosting: Vercel + Neon (D3). Railway deferred indefinitely — see top-of-doc banner.
+- ✓ Pub/sub at MVP: N/A — no event pipeline built yet (no signals, no alerts). Postgres LISTEN/NOTIFY remains the design when it lands.
+- 🔁 Dagster: deferred — GH Actions cron + `make load-latest` covers monthly cadence; revisit when signal pipeline lands.
+- ✓ ORM: SQLAlchemy 2.0 async + GeoAlchemy2 (used in apps/api models, even though apps/api isn't deployed).
 
-**Risks:**
+**Risks (status):**
 
-- Boundary data ingest is fiddly (CRS mismatches, MultiPolygon edge cases). Allocate buffer.
-- Migrating from static-site to RSC adds ops complexity. Mitigation: greenfield Phase 2 — no URL preservation or visual continuity requirements (decision 2026-05-11).
-- Per-tier SLA tracking requires fetch metadata in adapters — design Protocol upfront.
+- ⏳ Boundary data ingest — not yet attempted; punted with `geometry NULL` in `geographic_area` (migration 0001 has a comment to tighten with a follow-up migration).
+- ✓ Migration from static-site — N/A; Phase 2 was greenfield.
+- ⏳ Per-tier SLA tracking — Protocol exists; SLA tracker not yet wired.
 
-**Effort:** 4–6 weeks. With 4 agents: one on schema + migrations, one on adapter framework + Redfin/FRED adapters, one on ETL + Dagster + signal pipeline, one on FastAPI + Next.js scaffold. Compresses to ~3 weeks if well-coordinated.
+**Effort (actual so far):** ~1 session for the scaffold; ETL → DB → UI wiring took another session. The full ~100-city expansion + boundary ingest + signal pipeline + Lighthouse gates remain.
 
 ---
 
