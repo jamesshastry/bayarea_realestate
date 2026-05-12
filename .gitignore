@@ -20,6 +20,12 @@ dist/
 .turbo/
 *.tsbuildinfo
 
+# Exception: @bayre/finance ships a pre-built dist/ so apps/web can import it
+# on Vercel without running a workspace-prebuild step. Without this, Vercel
+# clones the repo, runs `pnpm install`, then `next build` — and the
+# @bayre/finance import fails because dist/ doesn't exist in the clone.
+!packages/finance/_ts_export/dist/
+
 # Environment & secrets
 .env
 .env.local
