@@ -60,16 +60,18 @@ verify-seed:
 	uv run python infra/migrations/verify_seed.py
 
 # ── Snapshot loader ─────────────────────────────────────────────────────
-# Push a Phase 0 snapshot JSON into the market_snapshot table.
+# Push a Phase 0 snapshot JSON into the market_snapshot table. Pass
+# --data-dir data so the install-vs-repo path resolution doesn't look
+# inside .venv/lib/python3.12/data/ (same gotcha as `make ingest`).
 load-snapshot:
 	@if [ -z "$(FILE)" ]; then echo "Usage: make load-snapshot FILE=data/YYYY-MM-DD.json"; exit 1; fi
 	uv run python -m etl.load_snapshots $(FILE)
 
 load-latest:
-	uv run python -m etl.load_snapshots --latest
+	uv run python -m etl.load_snapshots --latest --data-dir data
 
 load-latest-dry:
-	uv run python -m etl.load_snapshots --latest --dry-run
+	uv run python -m etl.load_snapshots --latest --data-dir data --dry-run
 
 # ── Cleanup ────────────────────────────────────────────────────────────
 clean:

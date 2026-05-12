@@ -32,11 +32,16 @@ from decimal import Decimal
 from typing import Any
 
 import asyncpg
-from dotenv import load_dotenv
+from dotenv import find_dotenv, load_dotenv
 
-# Repo root = packages/etl/load_snapshots.py → parents[2]
-_REPO_ROOT = pathlib.Path(__file__).resolve().parents[2]
-load_dotenv(_REPO_ROOT / ".env")
+# Walk up from CWD looking for `.env`. Avoids the install-vs-repo gotcha
+# where `__file__` points inside `.venv/lib/python3.12/site-packages/etl/`,
+# which is *not* the repo root.
+_DOTENV = find_dotenv(usecwd=True)
+if _DOTENV:
+    load_dotenv(_DOTENV)
+# Default data dir for `--latest` — also CWD-relative.
+_DEFAULT_DATA_DIR = pathlib.Path.cwd() / "data"
 
 # Re-import path: domain.snapshot is installed under the workspace name.
 from domain.snapshot import CitySnapshot, SnapshotFile  # noqa: E402
@@ -295,8 +300,8 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument(
         "--data-dir",
         type=pathlib.Path,
-        default=_REPO_ROOT / "data",
-        help="Where to look for --latest. Default: <repo>/data",
+        default=_DEFAULT_DATA_DIR,
+        help="Where to look for --latest. Default: ./data (CWD-relative)",
     )
     p.add_argument("--dry-run", action="store_true")
     args = p.parse_args(argv)
