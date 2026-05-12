@@ -107,6 +107,151 @@ export async function getCity(
   return rows[0] ?? null;
 }
 
+export type SchoolListing = {
+  cds_code: string;
+  name: string;
+  level: string;
+  district_name: string | null;
+};
+
+/** List schools under a metro. Returns empty until Phase 3 ingest lands.
+ *
+ * The path is `school → school_district.area_id → geographic_area.metro_id`
+ * (per `docs/datamodel.md` §4.1's polymorphic design — districts ARE
+ * geographic areas of kind='school_district', and they carry the metro_id).
+ *
+ * Order: by level (high → middle → elementary), then name.
+ */
+export async function listMetroSchools(metroSlug: string): Promise<SchoolListing[]> {
+  const rows = await getSql()<SchoolListing[]>`
+    SELECT
+      s.cds_code,
+      s.name,
+      s.level::text  AS level,
+      d.name         AS district_name
+    FROM school s
+    JOIN school_district d ON s.district_id = d.id
+    JOIN geographic_area district_area ON d.area_id = district_area.id
+    WHERE district_area.metro_id = (
+      SELECT id FROM geographic_area WHERE slug = ${metroSlug} AND kind = 'metro'
+    )
+    ORDER BY
+      CASE s.level
+        WHEN 'high' THEN 1
+        WHEN 'middle' THEN 2
+        WHEN 'elementary' THEN 3
+        ELSE 4
+      END,
+      s.name;
+  `;
+  return rows;
+}
+
+export type CityPhaseInput = {
+  slug: string;
+  name: string;
+  county_name: string;
+  history_months: number;
+  latest_period_end: Date | null;
+  /** Latest snapshot's metrics needed by computePhase, when available. */
+  median_dom: number | null;
+  active_listings: number | null;
+  sample_size: number | null;
+  confidence_score: number | null;
+  median_sale_price: string | null;
+  months_of_supply: string | null;
+  pct_with_price_drops: string | null;
+  /** 1-month median sale_to_list (for the s2l_4w slot). */
+  s2l_1m: string | null;
+  /** 3-month rolling median sale_to_list (for the s2l_12w slot). */
+  s2l_3m: string | null;
+};
+
+/**
+ * One row per city in a metro: latest snapshot + counts to drive the
+ * Phase 2 timing page. When `history_months < 3`, the timing UI shows
+ * "data accumulating" instead of a Market Phase classification because
+ * `computePhase` needs trailing medians it can't compute yet.
+ *
+ * The s2l_1m / s2l_3m approximations stand in for the s2l_4w / s2l_12w
+ * inputs `computePhase` expects (the function was designed for weekly
+ * snapshots; ours are monthly until the Phase 2 RESO MLS feed lands).
+ */
+export async function listMetroCitiesForTiming(
+  metroSlug: string,
+): Promise<CityPhaseInput[]> {
+  const rows = await getSql()<CityPhaseInput[]>`
+    WITH metro AS (
+      SELECT id FROM geographic_area WHERE slug = ${metroSlug} AND kind = 'metro'
+    ),
+    cities AS (
+      SELECT city.id, city.slug, city.name, county.name AS county_name
+      FROM geographic_area city
+      JOIN geographic_area county ON city.parent_id = county.id
+      WHERE city.kind = 'city' AND city.metro_id = (SELECT id FROM metro)
+    ),
+    ranked AS (
+      SELECT
+        ms.area_id,
+        ms.period_end,
+        ms.sale_to_list_ratio,
+        ms.median_dom,
+        ms.active_listings,
+        ms.sample_size,
+        ms.confidence_score,
+        ms.median_sale_price,
+        ms.months_of_supply,
+        ms.pct_with_price_drops,
+        row_number() OVER (PARTITION BY ms.area_id ORDER BY ms.period_start DESC) AS rn
+      FROM market_snapshot ms
+      WHERE ms.property_type = 'sfh' AND ms.area_id IN (SELECT id FROM cities)
+    ),
+    aggs AS (
+      SELECT
+        area_id,
+        count(*)::int                                              AS history_months,
+        max(period_end)                                            AS latest_period_end,
+        max(sale_to_list_ratio) FILTER (WHERE rn = 1)              AS s2l_1m,
+        percentile_cont(0.5) WITHIN GROUP (ORDER BY sale_to_list_ratio)
+          FILTER (WHERE rn <= 3)                                   AS s2l_3m
+      FROM ranked
+      GROUP BY area_id
+    ),
+    latest AS (
+      SELECT
+        area_id,
+        median_dom,
+        active_listings,
+        sample_size,
+        confidence_score,
+        median_sale_price,
+        months_of_supply,
+        pct_with_price_drops
+      FROM ranked WHERE rn = 1
+    )
+    SELECT
+      cities.slug,
+      cities.name,
+      cities.county_name,
+      coalesce(aggs.history_months, 0)         AS history_months,
+      aggs.latest_period_end                    AS latest_period_end,
+      latest.median_dom                         AS median_dom,
+      latest.active_listings                    AS active_listings,
+      latest.sample_size                        AS sample_size,
+      latest.confidence_score                   AS confidence_score,
+      latest.median_sale_price::text            AS median_sale_price,
+      latest.months_of_supply::text             AS months_of_supply,
+      latest.pct_with_price_drops::text         AS pct_with_price_drops,
+      aggs.s2l_1m::text                         AS s2l_1m,
+      aggs.s2l_3m::text                         AS s2l_3m
+    FROM cities
+    LEFT JOIN aggs   ON aggs.area_id   = cities.id
+    LEFT JOIN latest ON latest.area_id = cities.id
+    ORDER BY cities.name;
+  `;
+  return rows;
+}
+
 /** Most-recent market_snapshot for a city. Property type = 'sfh' for now
  * (the Phase 0 ingest writes `All Residential` rollups under that key —
  * see packages/etl/load_snapshots.py for the TODO to split this when the

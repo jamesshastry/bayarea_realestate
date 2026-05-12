@@ -5,6 +5,7 @@
  * `/v1/areas/{id}/snapshot` once apps/api lands on Railway.
  */
 
+import { Decimal } from "@bayre/finance";
 import { notFound } from "next/navigation";
 
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -16,6 +17,7 @@ import {
   getLatestCitySnapshot,
   type CitySnapshotRow,
 } from "@/lib/areas";
+import { DEFAULTS, medianMonthlyCost } from "@/lib/finance";
 
 export const dynamic = "force-dynamic";
 
@@ -58,12 +60,97 @@ export default async function CityPage({
 
       {snap ? <SnapshotSection snap={snap} /> : <NoDataNotice />}
 
+      {snap?.median_sale_price ? (
+        <MonthlyCostSection
+          medianPrice={snap.median_sale_price}
+          countyName={city.county_name}
+        />
+      ) : null}
+
       <p className="mt-12 text-xs text-tx-muted">
         Data live from Neon. Property type{" "}
         <code className="font-mono">All Residential</code> (rolled up under{" "}
         <code className="font-mono">sfh</code> until the Phase 2 SFH/condo
         split). Source: Redfin Data Center monthly city tracker.
       </p>
+    </div>
+  );
+}
+
+function MonthlyCostSection({
+  medianPrice,
+  countyName,
+}: {
+  medianPrice: string;
+  countyName: string;
+}) {
+  const cost = medianMonthlyCost(new Decimal(medianPrice), countyName);
+  if (cost === null) return null;
+
+  return (
+    <section className="mt-12">
+      <h2 className="text-xl mb-1">Monthly cost on the median home</h2>
+      <p className="text-tx-muted text-sm mb-4">
+        Show-the-math: P&amp;I + tax + Mello-Roos + HOA + insurance + PMI for
+        the median sale price above. Defaults: 20% down, 30-year fixed at{" "}
+        {(Number(DEFAULTS.rateAnnual.toString()) * 100).toFixed(2)}%,{" "}
+        ${Number(DEFAULTS.insuranceAnnual.toString()).toLocaleString()} annual
+        insurance, no Mello-Roos / no HOA. Per-buyer affordability calculator
+        coming next.
+      </p>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <CostCell label="P&I" value={cost.p_and_i.toString()} />
+        <CostCell label="Property tax" value={cost.tax.toString()} />
+        <CostCell label="Mello-Roos" value={cost.mello.toString()} />
+        <CostCell label="HOA" value={cost.hoa.toString()} />
+        <CostCell label="Insurance" value={cost.insurance.toString()} />
+        <CostCell
+          label="PMI"
+          value={cost.pmi.toString()}
+          hint={
+            cost.pmi.toString() === "0" || cost.pmi.toString() === "0.00"
+              ? "no PMI at 20% down"
+              : undefined
+          }
+        />
+      </div>
+      <div className="mt-4 p-4 bg-surface border border-border rounded">
+        <div className="text-xs text-tx-muted">Total monthly cost</div>
+        <div className="text-2xl font-mono mt-1">
+          ${Math.round(Number(cost.total.toString())).toLocaleString()}
+        </div>
+        <div className="text-xs text-tx-muted mt-1">
+          on a $
+          {Math.round(Number(medianPrice)).toLocaleString()} home, ${" "}
+          {Math.round(
+            Number(medianPrice) *
+              Number(DEFAULTS.downPaymentPct.toString()),
+          ).toLocaleString()}{" "}
+          down
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CostCell({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string;
+  hint?: string;
+}) {
+  const n = Number(value);
+  const display = Number.isFinite(n)
+    ? `$${Math.round(n).toLocaleString()}`
+    : "—";
+  return (
+    <div className="p-3 bg-surface border border-border rounded">
+      <div className="text-xs text-tx-muted">{label}</div>
+      <div className="text-lg font-mono mt-1">{display}</div>
+      {hint ? <div className="text-xs text-tx-muted mt-1">{hint}</div> : null}
     </div>
   );
 }
