@@ -1,0 +1,8 @@
+# Pinning targets here stops browserslist from walking up the filesystem
+# looking for a config — that walk fails on sandboxed CI / dev environments
+# where parent dirs aren't readable. Safe defaults for a Next.js 15 + React 19 app.
+> 0.5%
+last 2 versions
+Firefox ESR
+not dead
+not op_mini all
