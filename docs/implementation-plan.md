@@ -36,6 +36,60 @@
 
 ---
 
+## Next steps (prioritized)
+
+Pick from the top. Each is sized for a single session unless noted.
+
+### A. Tasks that need user input before they can start
+
+These are blocked on a credential, account, or product decision — listed first so the prerequisite surfaces early.
+
+1. **Verify 2026 FHFA loan limits** — `packages/finance/tax_rules.py` has `TODO(verify)` markers on `CONFORMING_BASELINE_2026` ($806,500) and `HIGH_BALANCE_CEILING_2026` ($1,209,750). Cross-check against the [Nov 2025 FHFA press release](https://www.fhfa.gov/news/news-release). 5 minutes.
+2. **Enable GitHub Pages** — Settings → Pages → source = `main` branch, folder `/status`. Makes `status/index.html` a public URL. 2 minutes.
+3. **Provision FRED API key** — sign up at https://fred.stlouisfed.org/docs/api/api_key.html (instant, free), drop into `.env` as `FRED_API_KEY`. **Required before B.2 below.**
+4. **Phase 3 schools decisions** (still open):
+   - GreatSchools API tier (free non-commercial OK pre-monetization).
+   - Attendance-zone polygon source per district (official PDFs vs. GreatSchools-provided GeoJSON).
+   - Fair Housing UI review checklist owner / date.
+
+### B. High-leverage code work (no user input needed)
+
+Each one is a discrete commit, all well-scoped.
+
+1. **Per-buyer affordability calculator** — extend the city page with a small form (income, monthly debts, down payment, loan type) that calls `affordability(buyer, market_ctx)` from `@bayre/finance` (already wired). Renders comfortable / stretch / max with the binding constraint. The TS port is parity-tested; this is pure UI work. ~1 session.
+2. **FRED daily mortgage-rate adapter** — `packages/adapters/fred_rates.py` per `docs/design.md` §3.4. New CLI subcommand: `python -m adapters.cli fred --series MORTGAGE30US`. Daily cron writes to `data/rates/YYYY-MM-DD.json`. Replaces the hardcoded 6.5% in `apps/web/src/lib/finance.ts::DEFAULTS.rateAnnual`. Blocked on A.3.
+3. **Lighthouse CI gate** (NF-PRF-08) — `.github/workflows/lighthouse.yml` runs against the deployed Vercel preview on every PR; fails the build below the perf budget defined in `docs/design.md` §10. ~1/2 session.
+4. **Backfill historical Redfin data** — the city tracker has data back to ~2016. One-shot script that walks `PERIOD_BEGIN` over multiple months, writes one snapshot file per month, runs the loader for each. Brings the timing page out of "Accumulating" immediately. ~1 session.
+5. **Expand `SEED_CITIES` from 7 to ~100 Bay Area cities** — config-only change in `packages/adapters/redfin_csv.py::SEED_CITIES` plus migration `0003_seed_remaining_cities.py`. Validates the Phase 5 "config-only" assumption a metro early.
+
+### C. Phase 2 backend pieces still open
+
+Lower priority because Vercel + Server Components + GH Actions cron covers the read+ingest paths today. Pick these up when one of the use cases below bites.
+
+1. **Boundary ingest** — Census TIGER (cities, counties, ZCTAs) + CDE (school districts). Fills the `geometry` column on every `geographic_area` row (currently NULL). Unlocks the map view (Phase 3) and any spatial query.
+2. **`/v1/status` "prior 30 days" view** — replace static `status/index.html` with a Server Component that reads `source_fetch` rows. Requires backfilling `source_fetch` from each cron run (~1 schema migration + a hook in the ingest CLI).
+3. **SignalDetector + `market_signal` pipeline** — Phase 4 prerequisite. Postgres LISTEN/NOTIFY trigger on `market_snapshot` insert → SignalDetector evaluates phase_transition / mos_threshold / s2l_threshold / dom_threshold / rate_threshold per `docs/design.md` §4.4. Use this when starting Phase 4 alerts; otherwise it's dead code.
+4. **Adapter framework expansion** — wire Movoto / Zillow as cross-check sources for `MEDIAN_PRICE` (per `docs/design.md` §3.3 disagreement thresholds). Increases confidence scoring fidelity.
+
+### D. Phase 3+ work (mostly parked on A.4)
+
+Once schools decisions land:
+
+1. CDE annual data ingest (no API key required; published as CSV / Excel).
+2. GreatSchools adapter (per A.4 decision).
+3. Attendance-zone polygon digitization runbook (`docs/runbooks/digitize-attendance-zone.md`) — the 3 priority schools' zones first.
+4. School pages, comparison page, fragmentation viz, map view.
+
+### E. Operational / tooling housekeeping
+
+Nice-to-haves that compound over time.
+
+1. **CI README badge** — green/red badge for the monthly cron + the main CI workflow, in `README.md` (which doesn't exist yet at the project root — also worth creating).
+2. **`make test-coverage`** target that produces an HTML coverage report for `packages/finance/` (already at 100% but the report is a useful artifact).
+3. **Status-page "tier-stale" coloring** — `apps/web/src/components/ui/FreshnessBadge.tsx` currently maps `monthly` to the same color as `quarterly` (both stale-tier). Once the cron has a couple successful runs, the badge styling probably needs a "monthly is healthy" color separate from "quarterly is at risk".
+
+---
+
 ## How to read this plan
 
 Each phase lists:
