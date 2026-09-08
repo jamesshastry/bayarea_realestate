@@ -1,0 +1,203 @@
+{
+  "schema_version": 2,
+  "as_of_period": "2026-05",
+  "scraped_at": "2026-09-08T20:53:45.159871Z",
+  "cities": [
+    {
+      "slug": "dublin",
+      "name": "Dublin",
+      "county": "Alameda",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1350000",
+        "median_ppsf": "615.314494075",
+        "yoy_pct": null,
+        "dom": 34,
+        "sale_to_list": "0.9892760759",
+        "homes_sold": 43,
+        "active_listings": 157,
+        "new_listings": 88,
+        "months_of_supply": "3.7",
+        "pct_with_price_drops": "0.3375796178",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 90,
+        "freshness_tier": "monthly"
+      }
+    },
+    {
+      "slug": "pleasanton",
+      "name": "Pleasanton",
+      "county": "Alameda",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1650000",
+        "median_ppsf": "775.12254902",
+        "yoy_pct": null,
+        "dom": 24,
+        "sale_to_list": "0.99244795",
+        "homes_sold": 55,
+        "active_listings": 110,
+        "new_listings": 68,
+        "months_of_supply": "2",
+        "pct_with_price_drops": "0.2727272727",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 90,
+        "freshness_tier": "monthly"
+      }
+    },
+    {
+      "slug": "fremont",
+      "name": "Fremont",
+      "county": "Alameda",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1565000",
+        "median_ppsf": "961.614562723",
+        "yoy_pct": null,
+        "dom": 15,
+        "sale_to_list": "1.027129399",
+        "homes_sold": 131,
+        "active_listings": 278,
+        "new_listings": 187,
+        "months_of_supply": "2.1",
+        "pct_with_price_drops": "0.3021582734",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 90,
+        "freshness_tier": "monthly"
+      }
+    },
+    {
+      "slug": "milpitas",
+      "name": "Milpitas",
+      "county": "Santa Clara",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1260000",
+        "median_ppsf": "803.645401823",
+        "yoy_pct": null,
+        "dom": 18,
+        "sale_to_list": "1.037369695",
+        "homes_sold": 41,
+        "active_listings": 81,
+        "new_listings": 54,
+        "months_of_supply": "2",
+        "pct_with_price_drops": "0.2469135802",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 90,
+        "freshness_tier": "monthly"
+      }
+    },
+    {
+      "slug": "sunnyvale",
+      "name": "Sunnyvale",
+      "county": "Santa Clara",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1750000",
+        "median_ppsf": "1229.560995161",
+        "yoy_pct": null,
+        "dom": 15,
+        "sale_to_list": "1.050507786",
+        "homes_sold": 100,
+        "active_listings": 145,
+        "new_listings": 116,
+        "months_of_supply": "1.5",
+        "pct_with_price_drops": "0.3310344828",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 90,
+        "freshness_tier": "monthly"
+      }
+    },
+    {
+      "slug": "mountain-view",
+      "name": "Mountain View",
+      "county": "Santa Clara",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1840000",
+        "median_ppsf": "1109.652002626",
+        "yoy_pct": null,
+        "dom": 12,
+        "sale_to_list": "1.049779229",
+        "homes_sold": 63,
+        "active_listings": 87,
+        "new_listings": 57,
+        "months_of_supply": "1.4",
+        "pct_with_price_drops": "0.3793103448",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 90,
+        "freshness_tier": "monthly"
+      }
+    },
+    {
+      "slug": "campbell",
+      "name": "Campbell",
+      "county": "Santa Clara",
+      "metro": "bay-area",
+      "sfh": {
+        "median_price": "1700000",
+        "median_ppsf": "1048.951048951",
+        "yoy_pct": null,
+        "dom": 13,
+        "sale_to_list": "1.042031849",
+        "homes_sold": 25,
+        "active_listings": 69,
+        "new_listings": 40,
+        "months_of_supply": "2.8",
+        "pct_with_price_drops": "0.3188405797",
+        "median_drop_pct": null
+      },
+      "condo": null,
+      "data_quality": {
+        "sources": [
+          "redfin_csv:2026-05"
+        ],
+        "as_of": "2026-05-31",
+        "confidence": 80,
+        "freshness_tier": "monthly"
+      }
+    }
+  ]
+}

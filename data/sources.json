@@ -4,10 +4,10 @@
     "redfin_csv": {
       "failed_areas": {},
       "freshness_tier": "monthly",
-      "last_run_at": "2026-08-08T18:41:56.999740+00:00",
+      "last_run_at": "2026-09-08T20:53:45.160168+00:00",
       "license": "attribution",
       "name": "redfin_csv",
-      "snapshot_file": "data/2026-08-08.json",
+      "snapshot_file": "data/2026-09-08.json",
       "status": "ok",
       "successful_areas": [
         "campbell",
